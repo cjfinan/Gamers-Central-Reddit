@@ -1,1 +1,1 @@
-web: gunicorn gamers-central.wsgi
+web: gunicorn gamerscentral.wsgi

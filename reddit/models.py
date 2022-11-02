@@ -38,7 +38,7 @@ class Post(models.Model):
         return self.downvotes.count()
 
 
-class Comment(models.Models):
+class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments'
         )
@@ -49,7 +49,7 @@ class Comment(models.Models):
     approved = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['created_on']
+        ordering = ['created_date']
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"

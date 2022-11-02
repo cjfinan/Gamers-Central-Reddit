@@ -1,5 +1,6 @@
 body {
     color: #e7e7e7;
+    padding: 0;
 }
 
 nav{
@@ -19,6 +20,7 @@ nav{
 
 footer, .card-title, .card-text{
     color: #102b3f;
+    text-decoration: none;
 }
 
 .footer-icon {
@@ -33,4 +35,25 @@ footer, .card-title, .card-text{
 
 .card-subheading{
     margin: 0;
+}
+
+.post-link{
+    text-decoration: none;
+}
+
+.post-title, .post-content{
+    margin: 0;
+    color: #102b3f;
+}
+
+.post-subtitle{
+    color: #102b3f;
+}
+
+.post-comments, .comments-heading, .comments-body{
+    color: #102b3f;
+}
+
+.comments{
+    background-color: #e2cfea;
 }

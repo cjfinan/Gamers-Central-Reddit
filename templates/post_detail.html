@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 mt-1">
+            <p class="post-subtitle mt-2 text-muted">{{ post.author }} | {{ post.created_date }}</p>
+            <h1 class="post-title">{{post.title}}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <p class="post-content">{{ post.content }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-2 mt-1">
+            {% if "placeholder" in post.featured_image.url %}
+            <img src="" width="100%">
+            {% else %}
+            <img src=" {{ post.featured_image.url }}" width="100%">
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-8 offset-2 mt-1 mb-3">
+            <h4 class="comments-heading">Comments:</h4>
+            <div class="mb-3">
+                {% for comment in comments %}
+                <div class="comments">
+                    <p class="post-comments">
+                        {{comment.name}}
+                        <span class="text-muted">
+                            {{comment.created_date}}
+                        </span> says:
+                    </p>
+                    <span class="comments-body">
+                        {{comment.body | linebreaks}}
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

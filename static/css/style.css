@@ -1,0 +1,27 @@
+body {
+    color: #e7e7e7;
+}
+
+nav{
+    background-color: #102b3f;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #e7e7e7;
+}
+
+#logo{
+    text-decoration: none;
+    color: #e7e7e7;
+    font-size: 30px;
+}
+
+footer{
+    color: #102b3f;
+}
+
+.footer-icon {
+    color: #102b3f;
+    font-size: 24px;
+}

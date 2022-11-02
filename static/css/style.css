@@ -17,11 +17,20 @@ nav{
     font-size: 30px;
 }
 
-footer{
+footer, .card-title, .card-text{
     color: #102b3f;
 }
 
 .footer-icon {
     color: #102b3f;
     font-size: 24px;
+}
+
+.card-img-bottom{
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-subheading{
+    margin: 0;
 }

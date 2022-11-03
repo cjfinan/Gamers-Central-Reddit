@@ -1,5 +1,6 @@
 body {
-    color: #e7e7e7;
+    background-color: #e7e7e7;
+    color: #102b3f;
     padding: 0;
 }
 
@@ -43,17 +44,29 @@ footer, .card-title, .card-text{
 
 .post-title, .post-content{
     margin: 0;
-    color: #102b3f;
-}
-
-.post-subtitle{
-    color: #102b3f;
-}
-
-.post-comments, .comments-heading, .comments-body{
-    color: #102b3f;
+    /* color: #102b3f; */
 }
 
 .comments{
     background-color: #e2cfea;
+}
+
+.btn-logout, .btn-signup, .btn-signin{
+    background-color: #102b3f;
+    color: #e7e7e7;
+}
+
+.btn-signup:hover, .btn-logout:hover, .btn-signup:hover, .btn-signin:hover{
+    background-color: #e7e7e7;
+    color: #102b3f;
+    border: 1px solid #102b3f;
+}
+
+
+.link{
+    color: #a06cd5;
+}
+
+.link:hover {
+    color: #6247aa;
 }

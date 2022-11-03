@@ -44,7 +44,6 @@ footer, .card-title, .card-text{
 
 .post-title, .post-content{
     margin: 0;
-    /* color: #102b3f; */
 }
 
 .comments{
@@ -61,7 +60,6 @@ footer, .card-title, .card-text{
     color: #102b3f;
     border: 1px solid #102b3f;
 }
-
 
 .link{
     color: #a06cd5;

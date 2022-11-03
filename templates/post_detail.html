@@ -24,39 +24,47 @@
             {% endif %}
         </div>
     </div>
-
-
     <div class="row">
-        <div class="col-12 mt-1 mb-3">
-            {% if user.is_authenticated %}
-            <div class="row">
-                <div class="col-12 mt-1">
-                    <h5>What do you think? Leave a Comment:</h5>
-                    <form method="post">
-                        {{ comment_form | crispy }}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-signup mt-1">Submit</button>
-                    </form>
-                </div>
-            </div>
-            {% endif %}
-            <h4 class="comments-heading">Comments:</h4>
-            <div class="mb-3 mt-1">
-                {% for comment in comments %}
-                <div class="comments">
-                    <p class="post-comments">
-                        {{comment.name}}
-                        <span class="text-muted">
-                            {{comment.created_date}}
-                        </span> says:
-                    </p>
-                    <span class="comments-body">
-                        {{comment.body | linebreaks}}
-                    </span>
-                </div>
-                {% endfor %}
-            </div>
+        <div class="col-12 text-center mt-2 mb-2">
+            <span class="thumbs-up"><i class="far fa-thumbs-up"></i></span>
+            <span class="thumbs-up">{{ post.number_of_upvotes }}</span>
+            <span class="thumbs-down"><i class="far fa-thumbs-down"></i></span>
+            <span class="thumbs-up">{{ post.number_of_downvotes }}</span>
         </div>
     </div>
+<div class="row">
+        <div class="col-12 mt-1 mb-3">
+            {% if commented %}
+            <div class="alert alert-success" role="alert">
+                Your comment is waiting to be approved!
+            </div>
+            {% else %}
+            {% if user.is_authenticated %}
+            <h5>What do you think? Leave a Comment:</h5>
+            <form method="post">
+                {{ comment_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-signup mt-1">Submit</button>
+            </form>
+
+            {% endif %}
+            {% endif %}
+        </div>
+    <h4 class="comments-heading">Comments:</h4>
+    <div class="mb-3 mt-1">
+        {% for comment in comments %}
+        <div class="comments">
+            <p class="post-comments">
+                {{comment.name}}
+                <span class="text-muted">
+                    {{comment.created_date}}
+                </span> says:
+            </p>
+            <span class="comments-body">
+                {{comment.body | linebreaks}}
+            </span>
+        </div>
+        {% endfor %}
     </div>
+</div>
     {% endblock content %}

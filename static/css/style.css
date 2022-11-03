@@ -68,3 +68,12 @@ footer, .card-title, .card-text{
 .link:hover {
     color: #6247aa;
 }
+
+.thumbs-up{
+    font-size: 50px;
+}
+
+.thumbs-down{
+    font-size: 50px;
+    margin-left: 20px;
+}

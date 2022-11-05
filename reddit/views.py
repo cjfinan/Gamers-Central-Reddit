@@ -71,7 +71,7 @@ class PostDetail(View):
             },)
 
 
-class PostVotes(View):
+class PostUpVotes(View):
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -80,5 +80,18 @@ class PostVotes(View):
             post.upvotes.remove(request.user)
         else:
             post.upvotes.add(request.user)
+
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostDownVotes(View):
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.downvotes.filter(id=request.user.id).exists():
+            post.downvotes.remove(request.user)
+        else:
+            post.downvotes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))

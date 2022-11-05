@@ -26,9 +26,34 @@
     </div>
     <div class="row">
         <div class="col-12 text-center mt-2 mb-2">
+            {% if user.is_authenticated %}
+            <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
+                {% csrf_token %}
+                {% if upvoted %}
+                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span class="thumbs-up">
+                        <i class="fas fa-thumbs-up"></i></span></button>
+                {% else %}
+                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span class="thumbs-up">
+                        <i class="far fa-thumbs-up"></i></span></button>
+                {% endif %}
+            </form>
+
+            <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                {% csrf_token %}
+                {% if downvoted %}
+                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span class="thumbs-up">
+                        <i class="fas fa-thumbs-down"></i></span></button>
+                {% else %}
+                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span class="thumbs-up">
+                        <i class="far fa-thumbs-down"></i></span></button>
+                {% endif %}
+            </form>
+            {% else %}
             <span class="thumbs-up"><i class="far fa-thumbs-up"></i></span>
+            <span class="thumbs-up"><i class="far fa-thumbs-down"></i></span>
+
+            {% endif %}
             <span class="thumbs-up">{{ post.number_of_upvotes }}</span>
-            <span class="thumbs-down"><i class="far fa-thumbs-down"></i></span>
             <span class="thumbs-up">{{ post.number_of_downvotes }}</span>
         </div>
     </div>

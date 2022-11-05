@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -95,3 +95,27 @@ class PostDownVotes(View):
             post.downvotes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostCreate(View):
+    model = Post
+
+    def get(self, request):
+        post_form = PostForm()
+        context = {"post_form": post_form}
+        return render(request, 'post_create.html', context)
+
+    def post(self, request, *args, **kwargs):
+
+        post_form = PostForm(data=request.POST)
+
+        post_form = PostForm(request.POST)
+
+        if post_form.is_valid():
+            instance = post_form.save(commit=False)
+
+            instance.name = request.user.username
+            instance.save()
+
+        context = {'index.html': 'index.html/'}
+        return render(request, 'post_create.html', context)

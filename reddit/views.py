@@ -121,3 +121,16 @@ class PostCreate(View):
 
         context = {'post_form': post_form}
         return render(request, 'post_create.html', context)
+
+
+def post_search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        posts = Post.objects.filter(content__contains=searched)
+        return render(
+            request,
+            'post_search.html',
+            {'searched': searched, 'posts': posts})
+    else:
+        return render(request, 'post_search.html')
+

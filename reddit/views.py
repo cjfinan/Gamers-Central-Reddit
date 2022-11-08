@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import DetailView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-from .models import Post
+from .models import Post, UserProfile
 from django.db.models import Q
 from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm
 
@@ -156,3 +157,16 @@ class ChangePassword(PasswordChangeView):
 def password_success(request):
     return render(request, 'password_success.html', {})
 
+
+class UserProfilePage(DetailView):
+    model = UserProfile
+    template_name = 'view_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+
+        context = super(UserProfilePage, self).get_context_data(
+            *args, **kwargs)
+        selected_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
+
+        context["selected_user"] = selected_user
+        return context

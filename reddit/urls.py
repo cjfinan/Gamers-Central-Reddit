@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
     path('post_search/', views.PostSearch, name='post_search'),
     path('edit_profile/', views.UserEdit.as_view(), name='edit_profile'),
+    path('<int:pk>/profile/', views.UserProfilePage.as_view(), name='view_profile'),
     path('password/', views.ChangePassword.as_view()),
     path('password_success/', views.password_success, name="password_success"),
     path('upvote/<slug:slug>', views.PostUpVotes.as_view(), name="post_up_vote"),

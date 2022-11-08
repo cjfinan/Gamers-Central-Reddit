@@ -6,7 +6,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .models import Post
 from django.db.models import Q
-from .forms import CommentForm, PostForm, EditUserProfileForm
+from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm
 
 
 class PostList(generic.ListView):
@@ -148,7 +148,7 @@ class UserEdit(generic.UpdateView):
 
 
 class ChangePassword(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = ChangePasswordForm
     template_name = 'change_password.html'
     success_url = reverse_lazy('home')
 

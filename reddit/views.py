@@ -3,7 +3,6 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from django.contrib import messages
 from django.urls import reverse_lazy
 from .models import Post
 from django.db.models import Q
@@ -142,7 +141,7 @@ def PostSearch(request):
 class UserEdit(generic.UpdateView):
     form_class = EditUserProfileForm
     template_name = 'edit_profile.html'
-    correct_url = reverse_lazy('home')
+    success_url = reverse_lazy('home')
 
     def get_object(self):
         return self.request.user
@@ -151,7 +150,6 @@ class UserEdit(generic.UpdateView):
 class ChangePassword(PasswordChangeView):
     form_class = PasswordChangeForm
     template_name = 'change_password.html'
-    # messages.success(request, 'Success')
     success_url = reverse_lazy('home')
 
 

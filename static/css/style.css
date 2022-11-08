@@ -77,3 +77,16 @@ footer, .card-title, .card-text{
     font-size: 50px;
     margin-left: 20px;
 }
+
+.profile-picture{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.featured-image{
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}

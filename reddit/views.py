@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserChangeForm
+from django.urls import reverse_lazy
 from .models import Post
 from django.db.models import Q
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, EditUserProfileForm
 
 
 class PostList(generic.ListView):
@@ -123,7 +125,7 @@ class PostCreate(View):
         return render(request, 'post_create.html', context)
 
 
-def post_search(request):
+def PostSearch(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         posts = Post.objects.filter(Q(content__icontains=searched) | Q(title__icontains=searched))
@@ -134,3 +136,11 @@ def post_search(request):
     else:
         return render(request, 'post_search.html')
 
+
+class UserEdit(generic.UpdateView):
+    form_class = EditUserProfileForm
+    template_name = 'edit_profile.html'
+    correct_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user

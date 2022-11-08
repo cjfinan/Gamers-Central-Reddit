@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
 from .models import Post
+from django.db.models import Q
 from .forms import CommentForm, PostForm
 
 
@@ -112,12 +112,12 @@ class PostCreate(View):
 
         if post_form.is_valid():
 
-            post_form.instance.author = request.user.username
-            post_form.instance.status = 0
+            post_form.instance.author = request.user
+            # post_form.instance.status = 0
             post = post_form.save(commit=False)
-            post.post = post
+            # post.post = post
             post.save()
-            return HttpResponseRedirect('/post_detail')
+            return HttpResponseRedirect('post_detail/')
 
         context = {'post_form': post_form}
         return render(request, 'post_create.html', context)
@@ -126,7 +126,7 @@ class PostCreate(View):
 def post_search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        posts = Post.objects.filter(content__contains=searched)
+        posts = Post.objects.filter(Q(content__icontains=searched) | Q(title__icontains=searched))
         return render(
             request,
             'post_search.html',

@@ -13,6 +13,32 @@ nav{
     color: #e7e7e7;
 }
 
+.nav-profile-picture{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.profile-link{
+    line-height: 1.5;
+    font-size: 20px
+}
+
+.dropdown-toggle{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.dropdown{
+    float: right;
+}
+
+.search-bar{
+    height: 40px;
+    margin-top: 6px;
+
+}
+
 #logo{
     text-decoration: none;
     color: #e7e7e7;

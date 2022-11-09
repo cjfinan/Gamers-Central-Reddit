@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-from .models import Post, UserProfile
+from .models import Post, UserProfile, User
 from django.db.models import Q
 from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm
 
@@ -164,9 +164,12 @@ class UserProfilePage(DetailView):
 
     def get_context_data(self, *args, **kwargs):
 
-        context = super(UserProfilePage, self).get_context_data(
-            *args, **kwargs)
         selected_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
 
+        user_posts = Post.objects.filter(author=selected_user.user)
+
+        context = super().get_context_data(*args, **kwargs)
+
         context["selected_user"] = selected_user
+        context["user_posts"] = user_posts
         return context

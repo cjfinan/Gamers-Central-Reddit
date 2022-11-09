@@ -78,10 +78,27 @@ footer, .card-title, .card-text{
     margin-left: 20px;
 }
 
-.profile-picture{
-    height: 50px;
-    width: 50px;
+.post-profile-picture{
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
+}
+
+.post-comment-picture{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.profile-picture{
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-profile-title, .user-profile-bio, .user-profile-socials{
+    margin-left: 5px;
 }
 
 .featured-image{

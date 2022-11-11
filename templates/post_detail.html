@@ -13,7 +13,7 @@
                                     class="post-profile-picture">
                             </a>
                         </span>
-                        <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">{{ post.author }} </a>
+                        <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">{{ post.author }} </a>
                         | {{ post.created_date }}</p>
                     <h1 class="post-title">{{post.title}}</h1>
                 </div>
@@ -101,7 +101,7 @@
                                 <img src="{{ post.author.userprofile.profile_picture.url }}" class="post-comment-picture">
                             </a>
                         </span>
-                        <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">
+                        <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">
                         {{comment.name}}
                         </a>
                         <span class="text-muted">

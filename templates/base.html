@@ -41,11 +41,17 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu">
+                          
+                          {% if user.userprofile.id %}
                           <li><a class="dropdown-item" href="{% url 'view_profile' user.userprofile.id %}">Profile</a></li>
-                          <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Settings</a></li>
-                          <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                          <li><a class="dropdown-item" href="{% url 'edit_profile' user.userprofile.id %}">Edit Profile</a></li>
+                          {% else %}
+                          <li><a class="dropdown-item" href="{% url 'edit_user' %}">Settings</a></li>
+                          <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a></li>
+                          {% endif %}
                         </ul>
                     </li>
+                    <li><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
                         {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>

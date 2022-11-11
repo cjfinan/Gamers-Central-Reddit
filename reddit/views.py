@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .models import Post, UserProfile, User
 from django.db.models import Q
-from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm
+from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm
 
 
 class PostList(generic.ListView):
@@ -141,7 +141,7 @@ def PostSearch(request):
 
 class UserEdit(generic.UpdateView):
     form_class = EditUserProfileForm
-    template_name = 'edit_profile.html'
+    template_name = 'edit_user.html'
     success_url = reverse_lazy('home')
 
     def get_object(self):
@@ -173,3 +173,21 @@ class UserProfilePage(DetailView):
         context["selected_user"] = selected_user
         context["user_posts"] = user_posts
         return context
+
+
+class EditProfilePage(generic.UpdateView):
+
+    model = UserProfile
+    template_name = 'edit_profile.html'
+    fields = ['bio', 'profile_picture', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url']
+    success_url = reverse_lazy('home')
+
+
+class CreateProfilePage(CreateView):
+    model = UserProfile
+    form_class = CreateProfileForm
+    template_name = 'create_profile_page.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

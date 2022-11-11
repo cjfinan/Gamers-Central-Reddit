@@ -1,4 +1,4 @@
-from .models import Comment, Post
+from .models import Comment, Post, UserProfile
 from django import forms
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
@@ -55,3 +55,19 @@ class ChangePasswordForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')
+
+
+class CreateProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('bio', 'profile_picture', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url')
+        widgets = {
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            # 'profile_picture': forms.TextInput(
+            #     max_length=100, widget=forms.TextInput(
+            #         attrs={'class': 'form-control'})),
+            'website_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),
+            'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
+        }

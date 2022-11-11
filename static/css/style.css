@@ -11,6 +11,8 @@ nav{
 .nav-link{
     text-decoration: none;
     color: #e7e7e7;
+    line-height: 2;
+    font-size: 15px
 }
 
 .nav-profile-picture{
@@ -132,4 +134,7 @@ footer, .card-title, .card-text{
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.input-signin{
 }

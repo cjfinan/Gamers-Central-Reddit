@@ -23,6 +23,18 @@ class CreatePostForm(forms.ModelForm):
         }
 
 
+class UpdatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'excerpt', 'content')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
 class EditUserProfileForm(UserChangeForm):
     username = forms.CharField(
         max_length=100, widget=forms.TextInput(

@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .models import Post, UserProfile, User
 from django.db.models import Q
-from .forms import CommentForm, CreatePostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm
+from .forms import CommentForm, CreatePostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm, UpdatePostForm
 
 
 class PostList(generic.ListView):
@@ -131,6 +131,18 @@ class PostCreate(CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'post_create.html'
+
+
+class PostUpdate(UpdateView):
+    model = Post
+    form_class = UpdatePostForm
+    template_name = 'post_update.html'
+
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('home')
 
 
 def PostSearch(request):

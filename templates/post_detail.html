@@ -13,13 +13,14 @@
                                     class="post-profile-picture">
                             </a>
                         </span>
-                        <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">{{ post.author }} </a>
+                        <a href="{% url 'view_profile' post.author.userprofile.id %}"
+                            class="post-link">{{ post.author }} </a>
                         | {{ post.created_date }} {% if user.id == post.author.id %}
                         <a href="{% url 'post_update' post.slug %}"><i class="fas fa-pen edit-icon"></i></a>
                         <a href="{% url 'post_delete' post.slug %}"><i class="fas fa-trash edit-icon"></i></a>
                         {% endif %}</p>
                     <h1 class="post-title">{{post.title}} </h1>
-                    
+
                 </div>
 
 
@@ -43,38 +44,44 @@
         <div class="row">
             <div class="col-12 text-center mt-2 mb-2">
                 {% if user.is_authenticated %}
-                <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
-                    {% csrf_token %}
-                    {% if upvoted %}
-                    <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span
-                            class="thumbs-up">
-                            <i class="fas fa-thumbs-up"></i></span></button>
-                    {% else %}
-                    <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span
-                            class="thumbs-up">
-                            <i class="far fa-thumbs-up"></i></span></button>
-                    {% endif %}
-                </form>
+                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
+                        {% csrf_token %}
+                        {% if upvoted %}
+                            <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up">
+                                <span class="thumbs-up">
+                                <i class="fas fa-thumbs-up"></i>
+                                </span>
+                            </button>
+                        {% else %}
+                            <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up">
+                                <span class="thumbs-up">
+                                    <i class="far fa-thumbs-up"></i>
+                                </span>
+                            </button>
+                        {% endif %}
+                    </form>
 
-                <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
-                    {% csrf_token %}
-                    {% if downvoted %}
-                    <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span
-                            class="thumbs-up">
-                            <i class="fas fa-thumbs-down"></i></span></button>
-                    {% else %}
-                    <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up"><span
-                            class="thumbs-up">
-                            <i class="far fa-thumbs-down"></i></span></button>
-                    {% endif %}
-                </form>
+                    <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                        {% csrf_token %}
+                        {% if downvoted %}
+                            <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up">
+                                <span class="thumbs-up">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </span>
+                            </button>
+                        {% else %}
+                            <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up">
+                                <span class="thumbs-up">
+                                    <i class="far fa-thumbs-down"></i>
+                                </span>
+                            </button>
+                        {% endif %}
+                    </form>
                 {% else %}
-                <span class="thumbs-up"><i class="far fa-thumbs-up"></i></span>
-                <span class="thumbs-up"><i class="far fa-thumbs-down"></i></span>
+                    <span class="thumbs-up"><i class="far fa-thumbs-up"></i></span>
+                    <span class="thumbs-up"><i class="far fa-thumbs-down"></i></span>
 
                 {% endif %}
-                <span class="thumbs-up">{{ post.number_of_upvotes }}</span>
-                <span class="thumbs-up">{{ post.number_of_downvotes }}</span>
             </div>
         </div>
         <div class="row">
@@ -102,11 +109,12 @@
                     <p class="post-comments">
                         <span>
                             <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">
-                                <img src="{{ post.author.userprofile.profile_picture.url }}" class="post-comment-picture">
+                                <img src="{{ post.author.userprofile.profile_picture.url }}"
+                                    class="post-comment-picture">
                             </a>
                         </span>
                         <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">
-                        {{comment.name}}
+                            {{comment.name}}
                         </a>
                         <span class="text-muted">
                             {{comment.created_date}}

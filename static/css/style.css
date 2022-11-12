@@ -136,5 +136,13 @@ footer, .card-title, .card-text{
     margin-right: auto;
 }
 
-.input-signin{
+.edit-icon{
+    font-size: 20px;
+    text-decoration: none;
+    color: #102b3f;
+    margin-left: 5px;
+}
+
+.edit-icon:hover{
+    transform: scale(1.3);
 }

@@ -14,12 +14,12 @@
                             </a>
                         </span>
                         <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">{{ post.author }} </a>
-                        {% if user.id == post.author.id %}
-                        <a href="{% url 'post_update' post.slug %}">Edit</a>
-                        <a href="{% url 'post_delete' post.slug %}">Delete Post</a>
-                        {% endif %}
-                        | {{ post.created_date }}</p>
-                    <h1 class="post-title">{{post.title}}</h1>
+                        | {{ post.created_date }} {% if user.id == post.author.id %}
+                        <a href="{% url 'post_update' post.slug %}"><i class="fas fa-pen edit-icon"></i></a>
+                        <a href="{% url 'post_delete' post.slug %}"><i class="fas fa-trash edit-icon"></i></a>
+                        {% endif %}</p>
+                    <h1 class="post-title">{{post.title}} </h1>
+                    
                 </div>
 
 

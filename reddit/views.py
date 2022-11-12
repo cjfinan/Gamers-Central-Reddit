@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, UpdateView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .models import Post, UserProfile, User
 from django.db.models import Q
-from .forms import CommentForm, PostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm
+from .forms import CommentForm, CreatePostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm
 
 
 class PostList(generic.ListView):
@@ -102,29 +102,35 @@ class PostDownVotes(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class PostCreate(View):
+# class PostCreate(View):
+#     model = Post
+#     form_class = CreatePostForm
+
+#     def get(self, request):
+#         post_form = CreatePostForm()
+#         context = {"post_form": post_form}
+#         return render(request, 'post_create.html', context)
+
+#     def post(self, request, *args, **kwargs):
+
+#         post_form = CreatePostForm(request.POST)
+
+#         if post_form.is_valid():
+
+#             post_form.instance.author = request.user.username
+#             # post_form.instance.status = 0
+#             post = post_form.save(commit=False)
+#             # post.post = post
+#             post.save()
+#             return HttpResponseRedirect('post_detail/')
+
+#         context = {'post_form': post_form}
+#         return render(request, 'post_create.html', context)
+
+class PostCreate(CreateView):
     model = Post
-
-    def get(self, request):
-        post_form = PostForm()
-        context = {"post_form": post_form}
-        return render(request, 'post_create.html', context)
-
-    def post(self, request, *args, **kwargs):
-
-        post_form = PostForm(request.POST)
-
-        if post_form.is_valid():
-
-            post_form.instance.author = request.user
-            # post_form.instance.status = 0
-            post = post_form.save(commit=False)
-            # post.post = post
-            post.save()
-            return HttpResponseRedirect('post_detail/')
-
-        context = {'post_form': post_form}
-        return render(request, 'post_create.html', context)
+    form_class = CreatePostForm
+    template_name = 'post_create.html'
 
 
 def PostSearch(request):

@@ -10,10 +10,17 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-class PostForm(forms.ModelForm):
+class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'excerpt', 'content', 'featured_image',)
+        fields = ('title', 'author', 'slug', 'excerpt', 'content', 'featured_image',)
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+            'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 
 class EditUserProfileForm(UserChangeForm):
@@ -29,15 +36,15 @@ class EditUserProfileForm(UserChangeForm):
     email = forms.EmailField(
         max_length=100, widget=forms.TextInput(
             attrs={'class': 'form-control'}))
-    is_superuser = forms.CharField(
-        max_length=100, widget=forms.CheckboxInput(
-            attrs={'class': 'form-check'}))
-    is_staff = forms.CharField(
-        max_length=100, widget=forms.CheckboxInput(
-            attrs={'class': 'form-check'}))
-    date_joined = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={'class': 'form-control'}))
+    # is_superuser = forms.CharField(
+    #     max_length=100, widget=forms.CheckboxInput(
+    #         attrs={'class': 'form-check'}))
+    # is_staff = forms.CharField(
+    #     max_length=100, widget=forms.CheckboxInput(
+    #         attrs={'class': 'form-check'}))
+    # date_joined = forms.CharField(
+    #     max_length=100, widget=forms.TextInput(
+    #         attrs={'class': 'form-control'}))
 
     class Meta:
         model = User

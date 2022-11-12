@@ -38,6 +38,9 @@ class Post(models.Model):
     def number_of_downvotes(self):
         return self.downvotes.count()
 
+    def get_absolute_url(self):
+        return reverse('home')
+
 
 class Comment(models.Model):
     post = models.ForeignKey(

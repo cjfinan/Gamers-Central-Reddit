@@ -23,6 +23,7 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_date')
+        voted = False
         upvoted = False
         if post.upvotes.filter(id=self.request.user.id).exists():
             upvoted = True
@@ -48,9 +49,15 @@ class PostDetail(View):
         upvoted = False
         if post.upvotes.filter(id=self.request.user.id).exists():
             upvoted = True
+            voted = True
         downvoted = False
         if post.downvotes.filter(id=self.request.user.id).exists():
             downvoted = True
+            voted = True
+        if upvoted:
+            post.downvotes.remove(request.user)
+        if downvoted:
+            post.downvotes.remove(request.user)
 
         comment_form = CommentForm(data=request.POST)
 
@@ -83,6 +90,8 @@ class PostUpVotes(View):
 
         if post.upvotes.filter(id=request.user.id).exists():
             post.upvotes.remove(request.user)
+        elif post.downvotes.filter(id=request.user.id).exists():
+            post.downvotes.remove(request.user)
         else:
             post.upvotes.add(request.user)
 
@@ -96,9 +105,11 @@ class PostDownVotes(View):
 
         if post.downvotes.filter(id=request.user.id).exists():
             post.downvotes.remove(request.user)
+        elif post.upvotes.filter(id=request.user.id).exists():
+            post.upvotes.remove(request.user)
         else:
             post.downvotes.add(request.user)
-
+            
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 

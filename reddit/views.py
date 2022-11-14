@@ -95,7 +95,7 @@ class PostUpVotes(View):
         else:
             post.upvotes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 class PostDownVotes(View):
@@ -110,7 +110,7 @@ class PostDownVotes(View):
         else:
             post.downvotes.add(request.user)
             
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 # class PostCreate(View):
@@ -142,6 +142,10 @@ class PostCreate(CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'post_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostUpdate(UpdateView):

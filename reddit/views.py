@@ -8,6 +8,8 @@ from django.urls import reverse_lazy
 from .models import Post, UserProfile, User
 from django.db.models import Q
 from .forms import CommentForm, CreatePostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm, UpdatePostForm
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class PostList(generic.ListView):
@@ -113,52 +115,34 @@ class PostDownVotes(View):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
-# class PostCreate(View):
-#     model = Post
-#     form_class = CreatePostForm
-
-#     def get(self, request):
-#         post_form = CreatePostForm()
-#         context = {"post_form": post_form}
-#         return render(request, 'post_create.html', context)
-
-#     def post(self, request, *args, **kwargs):
-
-#         post_form = CreatePostForm(request.POST)
-
-#         if post_form.is_valid():
-
-#             post_form.instance.author = request.user.username
-#             # post_form.instance.status = 0
-#             post = post_form.save(commit=False)
-#             # post.post = post
-#             post.save()
-#             return HttpResponseRedirect('post_detail/')
-
-#         context = {'post_form': post_form}
-#         return render(request, 'post_create.html', context)
-
-class PostCreate(CreateView):
+class PostCreate(SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'post_create.html'
+    success_message = 'Your Post has been submitted and now is awaiting approval.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class PostUpdate(UpdateView):
+class PostUpdate(SuccessMessageMixin, UpdateView):
     model = Post
     form_class = UpdatePostForm
     template_name = 'post_update.html'
+    success_message = 'Your Post has successfully been updated.'
 
 
-class PostDelete(DeleteView):
+class PostDelete(SuccessMessageMixin, DeleteView):
     model = Post
     template_name = 'post_delete.html'
+    success_message = 'Your Post has successfully been deleted.'
     success_url = reverse_lazy('home')
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(PostDelete, self).delete(request, *args, **kwargs)
+    
 
 def PostSearch(request):
     if request.method == 'POST':
@@ -172,23 +156,21 @@ def PostSearch(request):
         return render(request, 'post_search.html')
 
 
-class UserEdit(generic.UpdateView):
+class UserEdit(SuccessMessageMixin, generic.UpdateView):
     form_class = EditUserProfileForm
     template_name = 'edit_user.html'
     success_url = reverse_lazy('home')
+    success_message = 'Settings successfully changed.'
 
     def get_object(self):
         return self.request.user
 
 
-class ChangePassword(PasswordChangeView):
+class ChangePassword(SuccessMessageMixin, PasswordChangeView):
     form_class = ChangePasswordForm
     template_name = 'change_password.html'
     success_url = reverse_lazy('home')
-
-
-def password_success(request):
-    return render(request, 'password_success.html', {})
+    success_message = 'Password successfully changed.'
 
 
 class UserProfilePage(DetailView):
@@ -208,16 +190,16 @@ class UserProfilePage(DetailView):
         return context
 
 
-class EditProfilePage(generic.UpdateView):
+class EditProfilePage(SuccessMessageMixin, generic.UpdateView):
 
     model = UserProfile
     template_name = 'edit_profile.html'
     form_class = CreateProfileForm
-    # fields = ['bio', 'profile_picture', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url']
     success_url = reverse_lazy('home')
+    success_message = 'Profile successfully changed.'
 
 
-class CreateProfilePage(CreateView):
+class CreateProfilePage(SuccessMessageMixin, CreateView):
     model = UserProfile
     form_class = CreateProfileForm
     template_name = 'create_profile_page.html'

@@ -155,13 +155,15 @@ footer, .card-title, .card-text{
     font-size: 50px;
 }
 
-.thumbs-card{
-}
-
 .num-of-votes{
     font-size: 30px;
 }
 
 .post-section{
     height: 330px;
+}
+
+.success{
+    background-color: #99cc33;
+    color: #339900;
 }

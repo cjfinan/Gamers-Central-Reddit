@@ -10,7 +10,6 @@ urlpatterns = [
     path('<int:pk>/edit_profile_page/', views.EditProfilePage.as_view(), name='edit_profile'),
     path('create_profile_page/', views.CreateProfilePage.as_view(), name='create_profile'),
     path('password/', views.ChangePassword.as_view()),
-    path('password_success/', views.password_success, name="password_success"),
     path('upvote/<slug:slug>', views.PostUpVotes.as_view(), name="post_up_vote"),
     path('downvote/<slug:slug>', views.PostDownVotes.as_view(), name="post_down_vote"),
     path('post_create/', views.PostCreate.as_view(), name='post_create'),

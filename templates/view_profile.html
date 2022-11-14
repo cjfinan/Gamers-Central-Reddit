@@ -42,41 +42,88 @@
 
             </div>
         </div>
+        
         <div class="col-8">
-            <div class="card mt-2">
+            <div class="row">
                 {% for post in user_posts %}
-                <div class="col-8 mt-2 center offset-2">
+                <div class="col-1 text-center mt-2">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">{{ post.excerpt }}</p>
-                            </a>
-                            <p class="card-text card-subheading"><small class="text-muted">Author:
-                                    {{post.author}}</small></p>
-                            <p class="card-text card-subheading"><small class="text-muted">{{ post.created_date }}</small>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
+                                {% csrf_token %}
+                                {% if upvoted %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="fas fa-thumbs-up thumbs"></i>
+                                    </span>
+                                </button>
+                                {% else %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </span>
+                                </button>
+                                {% endif %}
+                            </form>
+                            <p class="num-of-votes">
+                                {{post.total_votes}}
                             </p>
-                        </div>
-                        {% if "placeholder" in post.featured_image.url %}
-                        <img src="..." class="card-img-bottom" alt="...">
-                        {% else %}
-                        <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
-                        {% endif %}
-                        <div>
-                            <p class="card-text h6">
-                                <i class="fas fa-thumbs-up">{{ number_of_upvotes }}</i>
-                                <i class="fas fa-thumbs-down">{{ number_of_upvotes }}</i>
-                            </p>
+                            <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                {% csrf_token %}
+                                {% if downvoted %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumps">
+                                    <span class="thumbs-up">
+                                        <i class="fas fa-thumbs-down"></i>
+                                    </span>
+                                </button>
+                                {% else %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="far fa-thumbs-down"></i>
+                                    </span>
+                                </button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
+                            <span class="thumbs-up thumbs"><i class="far fa-thumbs-down"></i></span>
+                            {% endif %}
                         </div>
                     </div>
-
+                </div>
+                    <div class="col-8  mt-2 center">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p class="card-text">{{ post.excerpt }}</p>
+                                </a>
+                                <p class="card-text card-subheading"><small class="text-muted">Author:
+                                        {{post.author}}</small></p>
+                                <p class="card-text card-subheading"><small
+                                        class="text-muted">{{ post.created_date }}</small>
+                                </p>
+                            </div>
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img src="..." class="card-img-bottom" alt="...">
+                            {% else %}
+                            <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
                 {% if forloop.counter|divisibleby:1%}
-            </div>
             <div class="row">
                 {% endif %}
                 {% endfor %}
         </div>
+        
+        
     </div>
 </div>
 

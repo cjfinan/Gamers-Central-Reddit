@@ -85,7 +85,9 @@
                             {% if "placeholder" in post.featured_image.url %}
                             <img src="..." class="card-img-bottom" alt="...">
                             {% else %}
-                            <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
+                            <a href="{% url 'post_detail' post.slug %}">
+                                <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
+                            </a>
                             {% endif %}
 
                         </div>

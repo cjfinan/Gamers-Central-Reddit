@@ -21,6 +21,15 @@ nav{
     border-radius: 50%;
 }
 
+.navbar-toggler-icon{
+    color: #e7e7e7;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(231,231,231, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
+}
+
+.navbar-toggler{
+    border: 2px solid #e7e7e7;
+}
+
 .profile-link{
     line-height: 1.5;
     font-size: 20px
@@ -211,7 +220,27 @@ footer, .card-title, .card-text{
     bottom: 15px;
 }
 
+.profile-votes-section{
+    height: 330px;
+}
+
+.profile-post-section{
+    height: 330px;
+}
+
 .success{
     background-color: #99cc33;
     color: #339900;
 }
+
+
+@media (max-width: 575.98px) { 
+    .dropdown-menu.show{
+        width: 80%;
+    }
+
+    .search-bar{
+        width: 80%;
+    }
+
+ }

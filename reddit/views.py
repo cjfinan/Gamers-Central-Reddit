@@ -51,15 +51,9 @@ class PostDetail(View):
         upvoted = False
         if post.upvotes.filter(id=self.request.user.id).exists():
             upvoted = True
-            voted = True
         downvoted = False
         if post.downvotes.filter(id=self.request.user.id).exists():
             downvoted = True
-            voted = True
-        if upvoted:
-            post.downvotes.remove(request.user)
-        if downvoted:
-            post.downvotes.remove(request.user)
 
         comment_form = CommentForm(data=request.POST)
 

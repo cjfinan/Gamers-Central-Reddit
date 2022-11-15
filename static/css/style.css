@@ -12,7 +12,7 @@ nav{
     text-decoration: none;
     color: #e7e7e7;
     line-height: 2;
-    font-size: 15px
+    font-size: 18px
 }
 
 .nav-profile-picture{
@@ -38,8 +38,13 @@ nav{
 .search-bar{
     height: 40px;
     margin-top: 6px;
-
+    width: 400px;
 }
+
+.dropdown{
+    margin-right: 10px;
+}
+
 
 #logo{
     text-decoration: none;
@@ -89,6 +94,21 @@ footer, .card-title, .card-text{
     border: 1px solid #102b3f;
 }
 
+.btn-search{
+    background-color: #e7e7e7;
+    color: #102b3f;
+}
+
+.btn-search:hover{
+    color: #e7e7e7;
+    background-color: #102b3f;
+    border: 1px solid #e7e7e7;
+}
+
+.btn-create-post{
+    width: 150px;
+}
+
 .link{
     color: #a06cd5;
 }
@@ -108,6 +128,10 @@ footer, .card-title, .card-text{
 
 .thumbs:hover{
     transform: scale(1.2);
+}
+
+.thumbs{
+    font-size: 50px;
 }
 
 .post-profile-picture{
@@ -151,16 +175,40 @@ footer, .card-title, .card-text{
     transform: scale(1.3);
 }
 
-.thumbs{
-    font-size: 50px;
-}
+
 
 .num-of-votes{
     font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 .post-section{
     height: 330px;
+    padding: 0;
+}
+
+.post-votes-section{
+    height: 330px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.votes-section{
+    height: 100px;
+    display: grid;
+    place-items: center;
+}
+
+.vertical-votes{
+    position: relative;
+    top: 20px;
+}
+
+.horizontal-votes{
+    position: relative;
+    bottom: 15px;
 }
 
 .success{

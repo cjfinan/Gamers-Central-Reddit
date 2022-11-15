@@ -24,34 +24,42 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <form class="d-flex search-bar" role="search" method="POST" action="{% url 'post_search' %}">
+                <ul class="navbar-nav mx-auto">
+                    <form class="d-flex search-bar justify-content-center" role="search" method="POST" action="{% url 'post_search' %}">
                         {% csrf_token %}
 
-                        <input class="form-control me-2" type="search" placeholder="Search Posts" aria-label="Search" name="searched">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" placeholder="Search Posts" aria-label="Search"
+                            name="searched">
+                        <button class="btn btn-search" type="submit">Search</button>
                     </form>
+                </ul>
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         {% if user.is_authenticated %}
+                        <li><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Logo" class="d-inline-block nav-profile-picture">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Logo"
+                                class="d-inline-block nav-profile-picture">
                             <span class="profile-link">
                                 {{ user }}
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                          {% if user.userprofile.id %}
-                          <li><a class="dropdown-item" href="{% url 'view_profile' user.userprofile.id %}">Profile</a></li>
-                          <li><a class="dropdown-item" href="{% url 'edit_profile' user.userprofile.id %}">Edit Profile</a></li>
-                          {% else %}
-                          <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a></li>
-                          {% endif %}
-                          <li><a class="dropdown-item" href="{% url 'edit_user' %}">Settings</a></li>
+                            {% if user.userprofile.id %}
+                            <li><a class="dropdown-item" href="{% url 'view_profile' user.userprofile.id %}">Profile</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'edit_profile' user.userprofile.id %}">Edit
+                                    Profile</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{% url 'edit_user' %}">Settings</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
-                        {% else %}
+                    
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
                     </li>

@@ -8,22 +8,26 @@
             <div class="row">
                 {% if user.is_authenticated %}
                 <div class="col-8 mt-1 offset-2 text-center">
-                    <a href="{% url 'post_create' %}">Create a post
+                    <a href="{% url 'post_create' %}">
+                        <button class="btn btn-create-post btn-signup ">
+                            Create a post
+                        </button>
                     </a>
                 </div>
                 {% endif %}
                 {% for post in post_list %}
                 <div class="row post-section mt-3">
-                    <div class="col-1 offset-2 text-center">
+                    <div class="col-1 offset-2 text-center d-none d-lg-block d-xl-block">
                         <div class="card">
-                            <div class="card-body post-section">
+                            <div class="card-body post-section align-items-center justify-content-center">
+                                <span class="vertical-votes">
                                 {% if user.is_authenticated %}
-                                <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
+                                <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                     {% csrf_token %}
                                     {% if upvoted %}
                                     <button type="submit" name="post_id" value="{{post.slug}}"
                                         class="thumbs-up btn thumbs">
-                                        <span class="thumbs-up">
+                                        <span class="thumbs-up vertical-votes">
                                             <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
                                     </button>
@@ -60,11 +64,12 @@
                                 {% else %}
                                 <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
                                 <span class="thumbs-up thumbs"><i class="far fa-thumbs-down"></i></span>
+                            </span>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
-                    <div class="col-7">
+                    <div class="col-lg-7 offset-lg-0 col-sm-12 col-md-8 offset-md-2" >
                         <div class="card post-section">
                             <div class="card-body">
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">
@@ -84,10 +89,66 @@
                             {% endif %}
 
                         </div>
+                        
+                    </div>
+                </div>
+                <div class="row mb-3">
+                <div class="d-lg-none d-xl-none col-sm-12 col-md-8 offset-md-2 text-center">
+                    <div class="card">
+                        <div class="card-body votes-section align-items-center justify-content-center">
+                            {% if user.is_authenticated %}
+                            <span class="horizontal-votes">
+                            <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
+                                {% csrf_token %}
+                                {% if upvoted %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="fas fa-thumbs-up thumbs"></i>
+                                    </span>
+                                </button>
+                                {% else %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </span>
+                                </button>
+                                {% endif %}
+                            </form>
+                            <span class="num-of-votes">
+                                {{post.total_votes}}
+                            </span>
+                            <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                {% csrf_token %}
+                                {% if downvoted %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumps">
+                                    <span class="thumbs-up">
+                                        <i class="fas fa-thumbs-down"></i>
+                                    </span>
+                                </button>
+                                {% else %}
+                                <button type="submit" name="post_id" value="{{post.slug}}"
+                                    class="thumbs-up btn thumbs">
+                                    <span class="thumbs-up">
+                                        <i class="far fa-thumbs-down"></i>
+                                    </span>
+                                </button>
+                                {% endif %}
+                            </form>
+                        </span>
+                            {% else %}
+                            <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
+                            <span class="thumbs-up thumbs"><i class="far fa-thumbs-down"></i></span>
+                            {% endif %}
+                            
+                        </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:1%}
             </div>
+        </div>
             <div class="row">
                 {% endif %}
                 {% endfor %}

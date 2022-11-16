@@ -6,7 +6,17 @@
         <div class="col-12 mt-2 center">
             <div class="card">
                 <div class="card-body">
-                    <p class="post-subtitle mt-2 text-muted">
+                    {% if user.id == post.author.id %}
+                    <div class="edit-post mb-3">
+                        <a href="{% url 'post_update' post.slug %}">
+                            <i class="fas fa-pen edit-icon"></i>
+                        </a>
+                        <a href="{% url 'post_delete' post.slug %}">
+                            <i class="fas fa-trash edit-icon"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <p class="post-subtitle mt-3 text-muted">
                         <span>
                             <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">
                                 <img src="{{ post.author.userprofile.profile_picture.url }}"
@@ -14,20 +24,19 @@
                             </a>
                         </span>
                         <a href="{% url 'view_profile' post.author.userprofile.id %}"
-                            class="post-link">{{ post.author }} </a>
-                        | {{ post.created_date }} {% if user.id == post.author.id %}
-                        <a href="{% url 'post_update' post.slug %}"><i class="fas fa-pen edit-icon"></i></a>
-                        <a href="{% url 'post_delete' post.slug %}"><i class="fas fa-trash edit-icon"></i></a>
-                        {% endif %}</p>
+                            class="post-link">
+                            {{ post.author }}
+                        </a>
+                        | {{ post.created_date }} 
+                    </p>
                     <h1 class="post-title">{{post.title}} </h1>
 
-                </div>
-
-
-                <div class="row">
-                    <div class="col-12">
-                        <p class="post-content">{{ post.content }}</p>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="post-content">{{ post.content }}</p>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="row">

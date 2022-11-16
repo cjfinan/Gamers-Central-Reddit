@@ -13,13 +13,13 @@ class CommentForm(forms.ModelForm):
 class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'slug', 'excerpt', 'content', 'featured_image',)
+        fields = ('title', 'excerpt', 'content', 'featured_image',)
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'slug': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            'content': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
 

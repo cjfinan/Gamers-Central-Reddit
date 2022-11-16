@@ -18,7 +18,7 @@
                     </div>
                     <p class="post-subtitle mt-3 text-muted">
                         <span>
-                            <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">
+                            <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">
                                 <img src="{{ post.author.userprofile.profile_picture.url }}"
                                     class="post-profile-picture">
                             </a>
@@ -119,12 +119,12 @@
                 <div class="comments">
                     <p class="post-comments">
                         <span>
-                            <a href="{% url 'view_profile' user.userprofile.id %}" class="post-link">
-                                <img src="{{ post.author.userprofile.profile_picture.url }}"
+                            <a href="{% url 'view_profile' comment.author.userprofile.id %}" class="post-link">
+                                <img src="{{ comment.author.userprofile.profile_picture.url }}"
                                     class="post-comment-picture">
                             </a>
                         </span>
-                        <a href="{% url 'view_profile' post.author.userprofile.id %}" class="post-link">
+                        <a href="{% url 'view_profile' comment.author.userprofile.id %}" class="post-link">
                             {{comment.name}}
                         </a>
                         <span class="text-muted">

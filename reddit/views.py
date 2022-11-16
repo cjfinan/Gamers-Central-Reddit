@@ -14,7 +14,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 class PostList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('created_date')
+    queryset = Post.objects.filter(status=1).order_by('-created_date')
     template_name = 'index.html'
     paginate_by = 10
 
@@ -58,10 +58,13 @@ class PostDetail(View):
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+
+            comment.author = User.objects.get(id=request.user.id)
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
             comment.post = post
+
             comment.save()
         else:
             comment_form = CommentForm()
@@ -135,7 +138,7 @@ class PostDelete(SuccessMessageMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(PostDelete, self).delete(request, *args, **kwargs)
-    
+
 
 def PostSearch(request):
     if request.method == 'POST':

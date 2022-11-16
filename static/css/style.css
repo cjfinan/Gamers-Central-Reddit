@@ -104,8 +104,7 @@ footer, .card-title, .card-text{
 }
 
 .btn-search{
-    background-color: #e7e7e7;
-    color: #102b3f;
+    color: #e7e7e7;
 }
 
 .btn-search:hover{
@@ -116,6 +115,17 @@ footer, .card-title, .card-text{
 
 .btn-create-post{
     width: 150px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    transition: all 0.2s ease 0s;
+    border-radius: 50px;
+}
+
+.btn-create-post:hover{
+    background-color: #a06cd5;
+    box-shadow: 0px 15px 20px rgba(98, 71, 170, 0.4);
+    color: #fff;
+    transform: translateY(-6px);
 }
 
 .btn-thumbs{
@@ -177,6 +187,10 @@ footer, .card-title, .card-text{
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.card-img-bottom{
+    height: 330px;
 }
 
 .edit-icon{
@@ -250,6 +264,10 @@ footer, .card-title, .card-text{
 
 .horizontal-icons{
     margin: auto;
+}
+
+.box-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profile-votes-section{

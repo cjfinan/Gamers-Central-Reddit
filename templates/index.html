@@ -8,7 +8,7 @@
             <div class="col-12 mt-2 center">
                 <div class="col-8 mt-1 offset-2 text-center">
                     <a href="{% url 'post_create' %}">
-                        <button class="btn btn-create-post btn-signup ">
+                        <button class="btn btn-create-post">
                             Create a post
                         </button>
                     </a>
@@ -18,7 +18,7 @@
         {% for post in post_list %}
         <div class="row post-section mt-3">
                 <div class="col-1 offset-2 text-center d-none d-lg-block d-xl-block">
-                    <div class="card">
+                    <div class="card box-shadow">
                         <div class="card-body post-section align-items-center justify-content-center">
                             <span class="vertical-votes">
                                 {% if user.is_authenticated %}
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             <div class="col-lg-7 offset-lg-0 col-sm-12 col-md-8 offset-md-2">
-                <div class="card post-section">
+                <div class="card post-section box-shadow">
                     <div class="card-body">
                         <a href="{% url 'post_detail' post.slug %}" class="post-link">
                             <h5 class="card-title">{{ post.title }}</h5>

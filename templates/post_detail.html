@@ -6,8 +6,8 @@
         <div class="col-12 mt-2 center">
             <div class="card">
                 <div class="card-body">
-                    {% if user.id == post.author.id %}
                     <div class="edit-post mb-3">
+                        {% if user.id == post.author.id %}
                         <a href="{% url 'post_update' post.slug %}">
                             <i class="fas fa-pen edit-icon"></i>
                         </a>

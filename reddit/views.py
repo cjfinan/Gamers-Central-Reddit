@@ -85,9 +85,9 @@ class PostUpVotes(View):
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
 
-        upvoted = False
-        if post.upvotes.filter(id=self.request.user.id).exists():
-            upvoted = True
+        # upvoted = False
+        # if post.upvotes.filter(id=self.request.user.id).exists():
+        #     upvoted = True
 
         if post.upvotes.filter(id=request.user.id).exists():
             post.upvotes.remove(request.user)
@@ -103,7 +103,7 @@ class PostDownVotes(View):
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
 
-        downvoted = False
+        # downvoted = False
         if post.downvotes.filter(id=request.user.id).exists():
             post.downvotes.remove(request.user)
         else:

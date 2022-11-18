@@ -26,7 +26,7 @@ class CreatePostForm(forms.ModelForm):
 class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'excerpt', 'content')
+        fields = ('title', 'excerpt', 'content',)
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -60,7 +60,7 @@ class EditUserProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'is_superuser', 'is_staff')
+        fields = ('username', 'first_name', 'last_name', 'email')
 
 
 class ChangePasswordForm(PasswordChangeForm):

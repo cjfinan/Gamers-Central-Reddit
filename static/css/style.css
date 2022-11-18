@@ -5,9 +5,14 @@ body {
 
 }
 
+.row{
+    padding: 0;
+}
+
 .background-image{
-    /* background-image: url("https://res.cloudinary.com/djtwpo6g7/image/upload/v1668764024/background_szxnpd.png"); */
+    background-image: url("https://res.cloudinary.com/djtwpo6g7/image/upload/v1668764024/background_szxnpd.png");
     height: 100%;
+    min-height: 800px;
 }
 
 nav{
@@ -19,6 +24,10 @@ nav{
     color: #e7e7e7;
     line-height: 2;
     font-size: 18px
+}
+
+.nav-link:hover{
+    color: #a06cd5;
 }
 
 .nav-profile-picture{
@@ -36,9 +45,19 @@ nav{
     border: 2px solid #e7e7e7;
 }
 
+.dropdown-item{
+    font-weight: 500;
+}
+
+.dropdown-item:hover{
+    background-color: #a06cd5;
+    color: #fff;
+}
+
 .profile-link{
     line-height: 1.5;
-    font-size: 20px
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .dropdown-toggle{
@@ -51,10 +70,10 @@ nav{
 }
 
 .search-bar{
-    height: 40px;
-    margin-top: 6px;
-    width: 400px;
+    border-radius: 45px;
+    width: 500px;
 }
+
 
 .dropdown{
     margin-right: 10px;
@@ -65,6 +84,13 @@ nav{
     text-decoration: none;
     color: #e7e7e7;
     font-size: 30px;
+    font-weight: 600px;
+}
+
+#login{
+    font-weight: 500;
+    font-size: larger;
+    line-height: 1.8;
 }
 
 footer, .card-title, .card-text{
@@ -256,6 +282,7 @@ footer, .card-title, .card-text{
 .vertical-votes{
     position: relative;
     top: 20px;
+    padding: 0;
 }
 
 .vertical-vote-icons{

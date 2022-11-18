@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-5 col-sm-12">
-            <div class="card mt-3">
+            <div class="card mt-3 box-shadow">
                 {% if userprofile.profile_picture %}
                     <img src="{{ userprofile.profile_picture.url }}" class="profile-picture">
                 {% else %}
@@ -47,7 +47,7 @@
             <div class="row">
                 {% for post in user_posts %}
                 <div class="col-2 text-center mt-3 d-sm-none d-md-block d-none d-sm-block">
-                    <div class="card profile-votes-section">
+                    <div class="card profile-votes-section box-shadow">
                         <div class="card-body vertical-votes">
                             {% if user.is_authenticated %}
                             <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
@@ -91,13 +91,14 @@
                             </form>
                             {% else %}
                             <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
+                            <p class="num-of-votes-horizontal"> {{post.total_votes}} </p>
                             <span class="thumbs-up thumbs"><i class="far fa-thumbs-down"></i></span>
                             {% endif %}
                         </div>
                     </div>
                 </div>
-                    <div class="col-lg-9 col-md-10 col-sm-12 mt-3 ">
-                        <div class="card profile-post-section">
+                    <div class="col-lg-10 col-md-10 col-sm-12 mt-3 ">
+                        <div class="card profile-post-section box-shadow">
                             <div class="card-body">
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                     <h5 class="card-title">{{ post.title }}</h5>
@@ -119,8 +120,8 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-12 d-md-none text-center">
-                        <div class="card">
-                            <div class="card-body votes-section align-items-center justify-content-center">
+                        <div class="card box-shadow">
+                            <div class="card-body align-items-center justify-content-center">
                                 {% if user.is_authenticated %}
                                 <span class="horizontal-votes">
                                 <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
@@ -165,6 +166,7 @@
                             </span>
                                 {% else %}
                                 <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
+                                <span class="num-of-votes-horizontal"> {{post.total_votes}} </span>
                                 <span class="thumbs-up thumbs"><i class="far fa-thumbs-down"></i></span>
                                 {% endif %}
                                 

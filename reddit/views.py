@@ -25,7 +25,6 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_date')
-        voted = False
         upvoted = False
         if post.upvotes.filter(id=self.request.user.id).exists():
             upvoted = True
@@ -75,39 +74,42 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,
-                "upvoted": upvoted,
-                "downvoted": downvoted,
+                # "upvoted": upvoted,
+                # "downvoted": downvoted,
                 "comment_form": CommentForm()
             },)
 
 
 class PostUpVotes(View):
 
-    def post(self, request, slug):
+    def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
+
+        upvoted = False
+        if post.upvotes.filter(id=self.request.user.id).exists():
+            upvoted = True
 
         if post.upvotes.filter(id=request.user.id).exists():
             post.upvotes.remove(request.user)
-        elif post.downvotes.filter(id=request.user.id).exists():
-            post.downvotes.remove(request.user)
         else:
             post.upvotes.add(request.user)
+            post.downvotes.remove(request.user)
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 class PostDownVotes(View):
 
-    def post(self, request, slug):
+    def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
 
+        downvoted = False
         if post.downvotes.filter(id=request.user.id).exists():
             post.downvotes.remove(request.user)
-        elif post.upvotes.filter(id=request.user.id).exists():
-            post.upvotes.remove(request.user)
         else:
             post.downvotes.add(request.user)
-            
+            post.upvotes.remove(request.user)
+
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 

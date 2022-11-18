@@ -179,7 +179,7 @@ class UserProfilePage(DetailView):
 
         selected_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
 
-        user_posts = Post.objects.filter(author=selected_user.user)
+        user_posts = Post.objects.filter(author=selected_user.user, status=1)
 
         context = super().get_context_data(*args, **kwargs)
 

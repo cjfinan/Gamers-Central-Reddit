@@ -1,108 +1,115 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Gamers Central
+Gamers Central is a inclusive gaming commuinity that creates a place to talk about all things games!
+It allows its members to share their ideas, talk about other peoples topics all whilst styling thier own profiles to stand out from the crowd 
 
-Welcome cjfinan,
+[Reponsive Design](INSERT LINK)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+You can view The live site [here!](https://gamers-central.herokuapp.com/)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+### Table of contents
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## UX
 
-`python3 -m http.server`
+### Site Purpose:
+- The intent of this site is to bring anyone who loves games together.
+- Gamers Central is a online gaming commuinty where the focus is on discussion and promoting individuality.
+- Anyone can access the site, view and search for the posts or topics they are interested in.
 
-A blue button should appear to click: _Make Public_,
+### Site Goal:
+To build a commuinty and place where people can share their views and ideas through creating their own posts aswell as, commenting on other peoples posts to create discussion.
+Promote individuality through creating their own custom profiles.
 
-Another blue button should appear to click: _Open Browser_.
+### Audience:
+For everyone who has a love for games. For people who want to have more in depth disscussions about certain gaming topics. Also for people who might be new to games and want to either know more or be apart of a commuinty.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Communication:
+A very minimal layout allows great communication between the site and user, easy to follow and clear navigation wherever you end up.
 
-A blue button should appear to click: _Make Public_,
+### Current User Goals:
+For Gamers to easily create their own posts to start a conversation or be apart of someone else's by commenting. But also for people new to gaming who might be looking to be in the know.
 
-Another blue button should appear to click: _Open Browser_.
+### New User Goals:
+To become istantly intregued and feel the urge to click on a post and navigate around
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Future Goals:
+- Add direct messages between users
+- Users to recieve their own notifications for when a post or comment has been approved
+- Have a most engaged with post on each users profile
+- Have a search filter where you can select certain topics
 
-To log into the Heroku toolbelt CLI:
+## User Stories
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Admin Stories:
+1. As a Site Admin I can approve or reject comments so that I can manage and maintain appropriate comments
+    - Story points: 1
+2. As a site admin I can approve or decline posts so that the site can be managed and have appropriate content
+    - Story points: 1
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Site User Stories:
+1. As a Site User I can view the number of likes on each post so that I can see which is the most popular
+    - Story points: 1
 
-------
+2. As a site user i can like and unlike a post so that I can interact with the community
+    - Story points: 3
 
-## Release History
+3. As a site user I can view a list of posts so that I can select one to read at a time
+    - Story points: 1
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+4. As a Site User I can register an account so that I can post, comment and like
+    - Story points: 2
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+5. As a Site User I can write comments on a post so that I can feel apart of the community
+    - Story points: 3
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+6. As a site user I can create posts so that I am creating a conversation with others
+    - Story points: 3
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+7. As a Site User I can create my own profile so that I can feel apart of the community
+    - Story points: 4
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+8. As a Site User I can edit my profile so that I express my individuality
+    - Story points: 2
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+9. As a Site User I can edit my settings so that I can change all of my details
+    - Story points: 2
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+10. As a Site User I can search for content or the title of a post so that I can filter through what i want to see
+    - Story points: 2
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+11. As a Site User I can edit my post in case i make any mistakes or it needs updating
+    - Story points: 1
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+12. As a Site User delete my posts in case I no longer want it for people to see
+    - Story points: 1
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## Design
+Wireframes:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Home page:
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![Homepage](/static/images/homepage-wireframe.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+Post page:
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![Postpage](/static/images/post-detail-page.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Profile page:
 
-------
+![Profilepage](/static/images/profile-page.png)
 
-## FAQ about the uptime script
+Colour Palette:
 
-**Why have you added this script?**
+![ColourPalette](/static/images/colour-palette.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Font:
+All fonts were obtained by the Google fonts library and i chose the following:
+Poppins
 
-**How will this affect me?**
+### Imagery:
+All imagery for the background and placeholders were supplied by me.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!

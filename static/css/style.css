@@ -7,6 +7,8 @@ body {
 
 .row{
     padding: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .background-image{
@@ -93,19 +95,22 @@ nav{
     line-height: 1.8;
 }
 
-footer, .card-title, .card-text{
-    color: #102b3f;
+.card-title, .card-text{
+    color: #e7e7e7;
     text-decoration: none;
 }
 
 .footer-icon {
     color: #102b3f;
     font-size: 24px;
+    text-decoration: none;
 }
 
 .card-img-bottom{
-    max-height: 200px;
+    max-height: 195px;
     object-fit: cover;
+    border-radius: 30px;
+    height: 330px;
 }
 
 .card-subheading{
@@ -114,6 +119,15 @@ footer, .card-title, .card-text{
 
 .post-link{
     text-decoration: none;
+    color: #6247aa;
+}
+
+.post-heading{
+    font-weight: 600;
+}
+
+.post-subtitle{
+    color: #fff;
 }
 
 .post-title, .post-content{
@@ -121,7 +135,26 @@ footer, .card-title, .card-text{
 }
 
 .comments{
-    background-color: #e2cfea;
+    background-color: rgba(226, 207, 234, 0.8);
+    border-radius: 15px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-link{
+    color: #6247aa;
+    text-decoration: none;
+}
+
+.post-comment-picture{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.fa-thumbs-up, .fa-thumbs-down{
+    color: #e7e7e7;
 }
 
 .btn-logout, .btn-signup, .btn-signin{
@@ -146,11 +179,13 @@ footer, .card-title, .card-text{
 }
 
 .btn-create-post{
+    color: #a06cd5;
     width: 150px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
     font-weight: 500;
     transition: all 0.2s ease 0s;
     border-radius: 50px;
+    border: 1px solid #a06cd5;
 }
 
 .btn-create-post:hover{
@@ -195,11 +230,6 @@ footer, .card-title, .card-text{
     border-radius: 50%;
 }
 
-.post-comment-picture{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
 
 .profile-picture{
     height: 200px;
@@ -221,14 +251,10 @@ footer, .card-title, .card-text{
     display: block;
 }
 
-.card-img-bottom{
-    height: 330px;
-}
-
 .edit-icon{
     font-size: 25px;
     text-decoration: none;
-    color: #102b3f;
+    color: #e7e7e7;
     margin-left: 5px;
 }
 
@@ -245,6 +271,7 @@ footer, .card-title, .card-text{
     font-size: 30px;
     margin-top: 20px;
     margin-bottom: 5px;
+    color: #e7e7e7;
 }
 
 .num-of-votes-vertical{
@@ -274,7 +301,7 @@ footer, .card-title, .card-text{
 }
 
 .votes-section{
-    height: 100px;
+    height: 80px;
     display: grid;
     place-items: center;
 }
@@ -292,7 +319,7 @@ footer, .card-title, .card-text{
 
 .horizontal-votes{
     position: relative;
-    bottom: 15px;
+    bottom: 20px;
 }
 
 .horizontal-icons{
@@ -317,7 +344,18 @@ footer, .card-title, .card-text{
     border-color: #badbcc;
 }
 
+.blue-card, .index-blue-card, .post-card{
+    background-color: rgba(16, 43, 63, 0.6);
+    border: 2px solid #102b3f ;
+    border: 2px solid #062726 ;
+    padding: 10px;
+    border-radius: 30px;
+    color: #e7e7e7
+}
 
+.index-blue-card{
+    padding: 0;
+}
 
 @media (max-width: 575.98px) { 
     .dropdown-menu.show{

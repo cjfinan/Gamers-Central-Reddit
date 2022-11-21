@@ -18,7 +18,7 @@
         {% for post in post_list %}
         <div class="row post-section mt-3">
                 <div class="col-1 offset-2 text-center d-none d-lg-block d-xl-block">
-                    <div class="card box-shadow">
+                    <div class="card box-shadow index-blue-card">
                         <div class="card-body post-section align-items-center justify-content-center">
                             <span class="vertical-votes">
                             {% if user.is_authenticated %}
@@ -75,22 +75,22 @@
                     </div>
                 </div>
             <div class="col-lg-7 offset-lg-0 col-sm-12 col-md-8 offset-md-2">
-                <div class="card post-section box-shadow">
+                <div class="card post-section box-shadow index-blue-card">
                     <div class="card-body">
                         <a href="{% url 'post_detail' post.slug %}" class="post-link">
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text">{{ post.excerpt }}</p>
                         </a>
-                        <p class="card-text card-subheading"><small class="text-muted">Author:
+                        <p class="card-text card-subheading"><small>Author:
                                 {{post.author}}</small></p>
-                        <p class="card-text card-subheading"><small class="text-muted">{{ post.created_date }}</small>
+                        <p class="card-text card-subheading"><small>{{ post.created_date }}</small>
                         </p>
                     </div>
                     {% if "placeholder" in post.featured_image.url %}
                     <img src="..." class="card-img-bottom" alt="...">
                     {% else %}
                     <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="post-image">
+                        <img src="{{ post.featured_image.url }}" class="card-img-bottom box-shadow" alt="post-image">
                     </a>
                     {% endif %}
 
@@ -100,7 +100,7 @@
         </div>
         <div class="row mb-3">
             <div class="d-lg-none d-xl-none col-sm-12 col-md-8 offset-md-2 text-center">
-                <div class="card">
+                <div class="card index-blue-card mt-1">
                     <div class="card-body votes-section align-items-center justify-content-center">
                         {% if user.is_authenticated %}
                         <span class="horizontal-votes">

@@ -21,51 +21,56 @@
                     <div class="card box-shadow">
                         <div class="card-body post-section align-items-center justify-content-center">
                             <span class="vertical-votes">
-                                {% if user.is_authenticated %}
-                                <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes"
-                                    method="POST">
-                                    {% csrf_token %}
-                                    {% if upvoted %}
-                                    <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
-                                        <span class="thumbs-up vertical-votes">
-                                            <i class="fas fa-thumbs-up thumbs"></i>
-                                        </span>
-                                    </button>
-                                    {% else %}
-                                    <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                            {% if user.is_authenticated %}
+                                {% if user in post.upvotes.all %}
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                        {% csrf_token %}
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
                                         <span class="thumbs-up">
-                                            <i class="far fa-thumbs-up"></i>
+                                        <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
-                                    </button>
-                                    {% endif %}
-                                </form>
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                            <span class="thumbs-up">
+                                                <i class="far fa-thumbs-up"></i>
+                                            </span>
+                                        </button>
+                                    </form>
+                                {% endif %}
                                 <p class="num-of-votes">
                                     {{post.total_votes}}
                                 </p>
-                                <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
-                                    {% csrf_token %}
-                                    {% if downvoted %}
-                                    <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps">
-                                        <span class="thumbs-up">
-                                            <i class="fas fa-thumbs-down"></i>
-                                        </span>
-                                    </button>
-                                    {% else %}
-                                    <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs">
-                                        <span class="thumbs-up">
-                                            <i class="far fa-thumbs-down"></i>
-                                        </span>
-                                    </button>
-                                    {% endif %}
-                                </form>
+                                {% if user in post.downvotes.all %}
+                                    <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps">
+                                            <span class="thumbs-up">
+                                                <i class="fas fa-thumbs-down"></i>
+                                            </span>
+                                        </button>
+                                    </form>
                                 {% else %}
+                                    <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs">
+                                            <span class="thumbs-up">
+                                                <i class="far fa-thumbs-down"></i>
+                                            </span>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            {% else %}
                                 <span class="vertical-vote-icons">
                                     <span class="thumbs"><i class="far fa-thumbs-up"></i></span>
                                     <p class="num-of-votes-vertical"> {{post.total_votes}}</p>
                                     <span class="thumbs"><i class="far fa-thumbs-down"></i></span>
                                 </span>
-                            </span>
                             {% endif %}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -101,39 +106,48 @@
                         <span class="horizontal-votes">
                             <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                 {% csrf_token %}
-                                {% if upvoted %}
-                                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up btn thumbs">
-                                    <span class="thumbs-up">
+                                {% if user in post.upvotes.all %}
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                        {% csrf_token %}
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                        <span class="thumbs-up">
                                         <i class="fas fa-thumbs-up thumbs"></i>
-                                    </span>
-                                </button>
+                                        </span>
+                                        </button>
+                                    </form>
                                 {% else %}
-                                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up btn thumbs">
-                                    <span class="thumbs-up">
-                                        <i class="far fa-thumbs-up"></i>
-                                    </span>
-                                </button>
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                            <span class="thumbs-up">
+                                                <i class="far fa-thumbs-up"></i>
+                                            </span>
+                                        </button>
+                                    </form>
                                 {% endif %}
                             </form>
                             <span class="num-of-votes">
                                 {{post.total_votes}}
                             </span>
-                            <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
-                                {% csrf_token %}
-                                {% if downvoted %}
-                                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up btn thumps">
-                                    <span class="thumbs-up">
-                                        <i class="fas fa-thumbs-down"></i>
-                                    </span>
-                                </button>
-                                {% else %}
-                                <button type="submit" name="post_id" value="{{post.slug}}" class="thumbs-up btn thumbs">
-                                    <span class="thumbs-up">
-                                        <i class="far fa-thumbs-down"></i>
-                                    </span>
-                                </button>
-                                {% endif %}
-                            </form>
+                            {% if user in post.downvotes.all %}
+                                    <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumps">
+                                            <span class="thumbs-up">
+                                                <i class="fas fa-thumbs-down"></i>
+                                            </span>
+                                        </button>
+                                    </form>
+                            {% else %}
+                                    <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                            <span class="thumbs-up">
+                                                <i class="far fa-thumbs-down"></i>
+                                            </span>
+                                        </button>
+                                    </form>
+                            {% endif %}
                         </span>
                         {% else %}
                         <p class="horizontal-icons">

@@ -74,8 +74,6 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,
-                # "upvoted": upvoted,
-                # "downvoted": downvoted,
                 "comment_form": CommentForm()
             },)
 
@@ -84,10 +82,6 @@ class PostUpVotes(View):
 
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
-
-        # upvoted = False
-        # if post.upvotes.filter(id=self.request.user.id).exists():
-        #     upvoted = True
 
         if post.upvotes.filter(id=request.user.id).exists():
             post.upvotes.remove(request.user)
@@ -103,7 +97,6 @@ class PostDownVotes(View):
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
 
-        # downvoted = False
         if post.downvotes.filter(id=request.user.id).exists():
             post.downvotes.remove(request.user)
         else:
@@ -180,6 +173,14 @@ class UserProfilePage(DetailView):
         selected_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
 
         user_posts = Post.objects.filter(author=selected_user.user, status=1)
+        
+        # post = get_object_or_404(Post, slug=slug)
+        # upvoted = False
+        # if post.upvotes.filter(id=self.request.user.id).exists():
+        #     upvoted = True
+        # downvoted = False
+        # if post.downvotes.filter(id=self.request.user.id).exists():
+        #     downvoted = True
 
         context = super().get_context_data(*args, **kwargs)
 

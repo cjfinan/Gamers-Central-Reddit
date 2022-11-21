@@ -29,13 +29,23 @@
       <div class="col-3 offset-2 mt-5">
         <form method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="login">
+        <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username" name="login" required id="id_login">
       </div>
       <div class="col-3 mt-5">
-        <input type="password" class="form-control" placeholder="Password" aria-label="password" name="password">
+        <input type="password" class="form-control" placeholder="Password" autocomplete="current-password" aria-label="password" name="password" required id="id_password">
       </div>
       <div class="col-2 mt-5">
         <button class="btn btn-signup">Sign in</button>
+        <!-- {% if messages %}
+        <div>
+          <strong>Messages:</strong>
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %} -->
       </form>
       </div>
     

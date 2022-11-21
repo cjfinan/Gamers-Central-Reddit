@@ -7,7 +7,7 @@
         <div class="col-lg-5 col-sm-12">
             <div class="card mt-3 box-shadow">
                     {% if userprofile.profile_picture %}
-                        <img src="{{ userprofile.profile_picture.url }}" class="profile-picture">
+                        <img src="{{ userprofile.profile_picture.url }}" class="profile-picture" alt="Users Profile Picture">
                     {% else %}
                         <!-- <img src="{{ userprofile.profile_picture.url }}" class="profile-picture"> -->
                     {% endif %}
@@ -18,23 +18,35 @@
                     <ul class="list-unstyled d-flex">
 
                         {% if userprofile.websiste_url %}
-                        <li class="ms-3"><a class="footer-icon" href="{{ userprofile.website_url }}" target="_blank"><i
-                                    class="fab fa-globe"></i></a></li>
+                        <li class="ms-3">
+                            <a class="footer-icon" href="{{ userprofile.website_url }}" target="_blank" aria-label="users website">
+                                <i class="fab fa-globe"></i>
+                            </a>
+                        </li>
                         {% endif %}
 
                         {% if userprofile.twitter_url %}
-                        <li class="ms-3"><a class="footer-icon" href="{{ userprofile.twitter_url }}" target="_blank"><i
-                                    class="fab fa-twitter"></i></a></li>
+                        <li class="ms-3">
+                            <a class="footer-icon" href="{{ userprofile.twitter_url }}" target="_blank" aria-label="users twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
                         {% endif %}
 
                         {% if userprofile.instagram_url %}
-                        <li class="ms-3"><a class="footer-icon" href="{{ userprofile.instagram_url }}"
-                                target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li class="ms-3">
+                            <a class="footer-icon" href="{{ userprofile.instagram_url }}" target="_blank" aria-label="users instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
                         {% endif %}
 
                         {% if userprofile.facebook_url %}
-                        <li class="ms-3"><a class="footer-icon" href="{{ userprofile.facebook_url }}" target="_blank"><i
-                                    class="fab fa-facebook"></i></a></li>
+                        <li class="ms-3">
+                            <a class="footer-icon" href="{{ userprofile.facebook_url }}" target="_blank" aria-label="users facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -52,7 +64,7 @@
                             {% if user in post.upvotes.all %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
                                         <span class="thumbs-up">
                                         <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
@@ -61,7 +73,7 @@
                                 {% else %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="undo like post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-up"></i>
                                             </span>
@@ -74,7 +86,7 @@
                             {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
@@ -83,7 +95,7 @@
                                 {% else %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs" aria-label="undo dislike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-down"></i>
                                             </span>
@@ -128,7 +140,7 @@
                                     {% if user in post.upvotes.all %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
                                         <span class="thumbs-up">
                                         <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
@@ -137,7 +149,7 @@
                                 {% else %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="undo like post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-up"></i>
                                             </span>
@@ -150,7 +162,7 @@
                                 {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
@@ -159,7 +171,7 @@
                                 {% else %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs" aria-label="undo dislike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-down"></i>
                                             </span>

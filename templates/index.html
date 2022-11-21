@@ -25,7 +25,7 @@
                                 {% if user in post.upvotes.all %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
                                         <span class="thumbs-up">
                                         <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
@@ -34,7 +34,7 @@
                                 {% else %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="unlike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-up"></i>
                                             </span>
@@ -47,7 +47,7 @@
                                 {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
@@ -56,7 +56,7 @@
                                 {% else %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs" aria-label="undo dislike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-down"></i>
                                             </span>
@@ -90,7 +90,7 @@
                     <img src="..." class="card-img-bottom" alt="...">
                     {% else %}
                     <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
+                        <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="post-image">
                     </a>
                     {% endif %}
 
@@ -109,7 +109,7 @@
                                 {% if user in post.upvotes.all %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="like post">
                                         <span class="thumbs-up">
                                         <i class="fas fa-thumbs-up thumbs"></i>
                                         </span>
@@ -118,7 +118,7 @@
                                 {% else %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="unlike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-up"></i>
                                             </span>
@@ -132,7 +132,7 @@
                             {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumps">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumps" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
@@ -141,7 +141,7 @@
                             {% else %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="undo dislike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-down"></i>
                                             </span>
@@ -162,21 +162,23 @@
             </div>
         </div>
     </div>
-        {% if forloop.counter|divisibleby:1%}
-    <div class="row">
-        {% endif %}
-        {% endfor %}
-{% if is_paginated %}
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% if forloop.counter|divisibleby:1%}
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
-        {% endif %}
-    </ul>
-</nav>
+            {% endif %}
+        </ul>
+
+    </nav>
+</div>
 {% endif %}
 {% endblock content %}

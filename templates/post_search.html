@@ -3,14 +3,12 @@
 {% block content %}
 
         {% if searched %}
-        <center>
-            <h3 class="mt-2"> Results for {{ searched }}:</h3>
-        </center>
         {% for post in posts %}
         <div class="container-fluid">
         <div class="row">
            <div class="col-8 mt-2 center offset-2">
-            <div class="card">
+            <h3 class="mt-2"> Results for {{ searched }}:</h3>
+            <div class="card box-shadow">
                 <div class="card-body">
                     <a href="{% url 'post_detail' post.slug %}" class="post-link">
                         <h5 class="card-title">{{ post.title }}</h5>
@@ -22,16 +20,10 @@
                     </p>
                 </div>
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="..." class="card-img-bottom" alt="...">
+                <img src="..." class="card-img-bottom" alt="placeholder image">
                 {% else %}
-                <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="">
+                <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="post featured image">
                 {% endif %}
-                <div>
-                    <p class="card-text h6">
-                        <i class="fas fa-thumbs-up">{{ number_of_upvotes }}</i>
-                        <i class="fas fa-thumbs-down">{{ number_of_upvotes }}</i>
-                    </p>
-                </div>
             </div>
 
         {% endfor %}

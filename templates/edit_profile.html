@@ -8,35 +8,34 @@
     <div class="row">
         <div class="col-12">
             <div class="col-8 offset-2 mt-2">
-                    <h1>Welcome {{user}} to your profile</h1>
-                    </div>
-                    <div class="col-8 offset-2 mt-5 form-group">
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-signup">Update Profile</button>
-                        </form>
-                    </div>
-                    {% else %}
-                    <div class="row">
-                        <div class="col-12">
-                            <h5>You can only edit your own profile!</h5>
-                            <p>Login <a href="{% url 'account_login' %}">here!</a></p>
-                        </div>
-                    </div>
-                    {% endif %}
-
-                    {% else %}
-                        <div class="row">
-                            <div class="col-12">
-                                <h5>You can only edit your own profile!</h5>
-                                <p>Login <a href="{% url 'account_login' %}">here!</a></p>
-                            </div>
-                        </div>
-                    {% endif %}
+                <h1>Welcome {{user}} to your profile</h1>
             </div>
+            <div class="col-8 offset-2 mt-5 form-group">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-signup" aria-label="Update profile">Update Profile</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-12">
+                    <h5>You can only edit your own profile!</h5>
+                    <p>Login <a href="{% url 'account_login' %}" aria-label="Login here">here!</a></p>
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="row">
+                <div class="col-12">
+                    <h5>You can only edit your own profile!</h5>
+                    <p>Login <a href="{% url 'account_login' %}" aria-label="Login here">here!</a></p>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
+</div>
 </div>
 
 

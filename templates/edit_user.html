@@ -12,7 +12,7 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button class="btn btn-signup">
+                <button class="btn btn-signup" aria-label="Update settings">
                     Update
                 </button>
             </form>

@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="col-8 offset-2 mt-5 form-group">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
         <button class="btn btn-signup" aria-label="Submit post">Submit Post</button>

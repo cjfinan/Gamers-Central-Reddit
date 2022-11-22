@@ -4,20 +4,19 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8 offset-2 mt-2">
-            <h2> Edit Settings</h2>
+            <div class="card blue-card">
+                <h2> Edit Settings</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="col-md-10 offset-5 mt-2 mb-2">
+                    <button class="btn btn-signup" aria-label="Update settings">
+                        Update
+                    </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 offset-2">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="btn btn-signup" aria-label="Update settings">
-                    Update
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

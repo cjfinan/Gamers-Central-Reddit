@@ -138,7 +138,7 @@ class PostDelete(SuccessMessageMixin, DeleteView):
 def PostSearch(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        posts = Post.objects.filter(Q(content__icontains=searched) | Q(title__icontains=searched))
+        posts = Post.objects.filter(Q(content__icontains=searched) | Q(title__icontains=searched), status=1)
         return render(
             request,
             'post_search.html',
@@ -173,14 +173,6 @@ class UserProfilePage(DetailView):
         selected_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
 
         user_posts = Post.objects.filter(author=selected_user.user, status=1)
-        
-        # post = get_object_or_404(Post, slug=slug)
-        # upvoted = False
-        # if post.upvotes.filter(id=self.request.user.id).exists():
-        #     upvoted = True
-        # downvoted = False
-        # if post.downvotes.filter(id=self.request.user.id).exists():
-        #     downvoted = True
 
         context = super().get_context_data(*args, **kwargs)
 

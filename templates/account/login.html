@@ -8,48 +8,31 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 mt-4 offset-2">
-
-
-      <h2>{% trans "Login" %}</h2>
-
-
-      <p>{% blocktrans %}Wants to be apart of the conversation?
-        if you have not done so then
-        <a class="link" href="{{ signup_url }}">sign up</a>{% endblocktrans %} here!</p>
-
+    <div class="col-md-8 mt-4 offset-2 text-center">
+      <div class="card blue-card">
+        <h2>{% trans "Login" %}</h2>
+        <p>{% blocktrans %}Wants to be apart of the conversation?
+          if you have not done so then
+          <a class="link" href="{{ signup_url }}">sign up</a>{% endblocktrans %} here!</p>
+        <div class="col-4 mt-5 offset-4">
+          <form method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username"
+              name="login" required id="id_login">
+        </div>
+        <div class="col-4 mt-5 offset-4">
+          <input type="password" class="form-control" placeholder="Password" autocomplete="current-password"
+            aria-label="password" name="password" required id="id_password">
+        </div>
+        <div class="col-4 mt-5 offset-4 mb-4">
+          <button class="btn btn-signup" aria-label="Sign in">Sign in</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-  <div class="row g-3">
-    
-      <div class="col-3 offset-2 mt-5">
-        <form method="POST" action="{% url 'account_login' %}">
-          {% csrf_token %}
-        <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username" name="login" required id="id_login">
-      </div>
-      <div class="col-3 mt-5">
-        <input type="password" class="form-control" placeholder="Password" autocomplete="current-password" aria-label="password" name="password" required id="id_password">
-      </div>
-      <div class="col-2 mt-5">
-        <button class="btn btn-signup" aria-label="Sign in">Sign in</button>
-        <!-- {% if messages %}
-        <div>
-          <strong>Messages:</strong>
-          <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %} -->
-      </form>
-      </div>
-    
-  </div>
-
 
 {% endblock %}

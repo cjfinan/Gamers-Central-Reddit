@@ -3,34 +3,36 @@
 {% block content %}
 
         {% if searched %}
-        {% for post in posts %}
+        
         <div class="container-fluid">
-        <div class="row">
-           <div class="col-8 mt-2 center offset-2">
-            <h3 class="mt-2"> Results for {{ searched }}:</h3>
-            <div class="card box-shadow">
-                <div class="card-body">
-                    <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.excerpt }}</p>
-                    </a>
-                    <p class="card-text card-subheading"><small class="text-muted">Author:
-                            {{post.author}}</small></p>
-                    <p class="card-text card-subheading"><small class="text-muted">{{ post.created_date }}</small>
-                    </p>
+            <div class="row">
+                <div class="col-8 mt-2 center offset-2">
+                        <h3 class="mt-2"> Results for {{ searched }}:</h3>
+                        {% for post in posts %}
+                        <div class="card box-shadow blue-card mt-2">
+                            <div class="card-body">
+                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p class="card-text">{{ post.excerpt }}</p>
+                                </a>
+                                <p class="card-text card-subheading"><small>Author: {{post.author}}</small></p>
+                                <p class="card-text card-subheading"><small>{{ post.created_date }}</small>
+                                </p>
+                            </div>
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img src="..." class="card-img-bottom box-shadow" alt="placeholder image">
+                            {% else %}
+                            <img src="{{ post.featured_image.url }}" class="card-img-bottom box-shadow" alt="post featured image">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="col-8 offset-2 mt-2 text-center">
+                            <h1> Remember to search for a post! </h1>
+                        </div>
+                        
+                        {% endif %}
                 </div>
-                {% if "placeholder" in post.featured_image.url %}
-                <img src="..." class="card-img-bottom" alt="placeholder image">
-                {% else %}
-                <img src="{{ post.featured_image.url }}" class="card-img-bottom" alt="post featured image">
-                {% endif %}
             </div>
-
-        {% endfor %}
-
-        {% else %}
-            <h1> Remember to search for a post! </h1>
-        {% endif %}
-
-
+        </div>
 {% endblock %}

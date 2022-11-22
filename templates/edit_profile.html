@@ -7,13 +7,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-                <div class="col-8 offset-2 mt-5 form-group">
+                <div class="col-8 offset-2 mt-3 mb-3 form-group">
                     <div class="card blue-card box-shadow">
                         <h1>Welcome {{user}} to your profile</h1>
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <button class="btn btn-signup" aria-label="Update profile">Update Profile</button>
+                            <div class="div text-center center-align">
+                            <button class="btn btn-signup btn-update" aria-label="Update profile">Update Profile</button>
+                            </div>
                         </form>
                     </div>
             </div>

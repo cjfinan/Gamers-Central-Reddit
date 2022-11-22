@@ -5,6 +5,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+a{
+    color: #e2cfea;
+    font-weight: 500;
+}
+
 .row{
     padding: 0;
     margin-left: 0;
@@ -106,6 +111,16 @@ nav{
     text-decoration: none;
 }
 
+.profile-icon{
+    color: #e7e7e7;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.profile-icon:hover{
+    color: #6247aa;
+}
+
 .card-img-bottom{
     max-height: 195px;
     object-fit: cover;
@@ -119,7 +134,7 @@ nav{
 
 .post-link{
     text-decoration: none;
-    color: #6247aa;
+    color: #e2cfea;
 }
 
 .post-heading{
@@ -140,11 +155,16 @@ nav{
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+    border: 2px solid #e2cfea
 }
 
 .comment-link{
     color: #6247aa;
     text-decoration: none;
+}
+
+.post-comments{
+    color: #102b3f;
 }
 
 .post-comment-picture{
@@ -199,8 +219,12 @@ nav{
     padding: 0;
 }
 
+.btn-update{
+    font-size: 20px;
+}
+
 .link{
-    color: #a06cd5;
+    color: #e2cfea;
 }
 
 .link:hover {
@@ -319,6 +343,11 @@ nav{
 
 .horizontal-votes{
     position: relative;
+    bottom: 15px;
+}
+
+.index-horizontal-votes{
+    position: relative;
     bottom: 20px;
 }
 
@@ -346,8 +375,7 @@ nav{
 
 .blue-card, .index-blue-card, .post-card{
     background-color: rgba(16, 43, 63, 0.6);
-    border: 2px solid #102b3f ;
-    border: 2px solid #062726 ;
+    border: 2px solid #102b3f;
     padding: 10px;
     border-radius: 30px;
     color: #e7e7e7

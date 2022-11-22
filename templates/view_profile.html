@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-5 col-sm-12">
-            <div class="card mt-3 box-shadow">
+            <div class="card mt-3 box-shadow blue-card">
                     {% if userprofile.profile_picture %}
                         <img src="{{ userprofile.profile_picture.url }}" class="profile-picture" alt="Users Profile Picture">
                     {% else %}
@@ -19,7 +19,7 @@
 
                         {% if userprofile.websiste_url %}
                         <li class="ms-3">
-                            <a class="footer-icon" href="{{ userprofile.website_url }}" target="_blank" aria-label="users website">
+                            <a class="profile-icon" href="{{ userprofile.website_url }}" target="_blank" aria-label="users website">
                                 <i class="fab fa-globe"></i>
                             </a>
                         </li>
@@ -27,7 +27,7 @@
 
                         {% if userprofile.twitter_url %}
                         <li class="ms-3">
-                            <a class="footer-icon" href="{{ userprofile.twitter_url }}" target="_blank" aria-label="users twitter">
+                            <a class="profile-icon" href="{{ userprofile.twitter_url }}" target="_blank" aria-label="users twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
@@ -35,7 +35,7 @@
 
                         {% if userprofile.instagram_url %}
                         <li class="ms-3">
-                            <a class="footer-icon" href="{{ userprofile.instagram_url }}" target="_blank" aria-label="users instagram">
+                            <a class="profile-icon" href="{{ userprofile.instagram_url }}" target="_blank" aria-label="users instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
@@ -43,7 +43,7 @@
 
                         {% if userprofile.facebook_url %}
                         <li class="ms-3">
-                            <a class="footer-icon" href="{{ userprofile.facebook_url }}" target="_blank" aria-label="users facebook">
+                            <a class="profile-icon" href="{{ userprofile.facebook_url }}" target="_blank" aria-label="users facebook">
                                 <i class="fab fa-facebook"></i>
                             </a>
                         </li>
@@ -58,7 +58,7 @@
             <div class="row">
                 {% for post in user_posts %}
                 <div class="col-2 text-center mt-3 d-sm-none d-md-block d-none d-sm-block">
-                    <div class="card profile-votes-section box-shadow">
+                    <div class="card profile-votes-section box-shadow blue-card">
                         <div class="card-body vertical-votes">
                             {% if user.is_authenticated %}
                             {% if user in post.upvotes.all %}
@@ -111,16 +111,14 @@
                     </div>
                 </div>
                     <div class="col-lg-10 col-md-10 col-sm-12 mt-3 ">
-                        <div class="card profile-post-section box-shadow">
+                        <div class="card profile-post-section box-shadow blue-card">
                             <div class="card-body">
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                     <h5 class="card-title">{{ post.title }}</h5>
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
-                                <p class="card-text card-subheading"><small class="text-muted">Author:
-                                        {{post.author}}</small></p>
-                                <p class="card-text card-subheading"><small
-                                        class="text-muted">{{ post.created_date }}</small>
+                                <p class="card-text card-subheading"><small>Author: {{post.author}}</small></p>
+                                <p class="card-text card-subheading"><small>{{ post.created_date }}</small>
                                 </p>
                             </div>
                             {% if "placeholder" in post.featured_image.url %}
@@ -132,53 +130,57 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-sm-12 d-md-none text-center">
-                        <div class="card box-shadow">
-                            <div class="card-body align-items-center justify-content-center">
+                    <div class="col-sm-12 d-md-none text-center mt-1">
+                        <div class="card box-shadow blue-card">
+                            <div class="card-body votes-section align-items-center justify-content-center">
                                 {% if user.is_authenticated %}
                                 <span class="horizontal-votes">
                                     {% if user in post.upvotes.all %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
-                                        <span class="thumbs-up">
-                                        <i class="fas fa-thumbs-up thumbs"></i>
-                                        </span>
+                                        <button type="submit" name="post_id" value="{{post.slug}}"
+                                            class="btn-thumbs btn thumbs" aria-label="like post">
+                                            <span class="thumbs-up">
+                                                <i class="fas fa-thumbs-up thumbs"></i>
+                                            </span>
                                         </button>
                                     </form>
-                                {% else %}
+                                    {% else %}
                                     <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="undo like post">
+                                        <button type="submit" name="post_id" value="{{post.slug}}"
+                                            class="btn-thumbs btn thumbs" aria-label="undo like post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-up"></i>
                                             </span>
                                         </button>
                                     </form>
-                                {% endif %}
-                                <span class="num-of-votes">
-                                    {{post.total_votes}}
-                                </span>
-                                {% if user in post.downvotes.all %}
+                                    {% endif %}
+                                    <span class="num-of-votes">
+                                        {{post.total_votes}}
+                                    </span>
+                                    {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps" aria-label="dislike post">
+                                        <button type="submit" name="post_id" value="{{post.slug}}"
+                                            class="btn btn-thumbs thumps" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
                                         </button>
                                     </form>
-                                {% else %}
+                                    {% else %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs" aria-label="undo dislike post">
+                                        <button type="submit" name="post_id" value="{{post.slug}}"
+                                            class="btn btn-thumbs thumbs" aria-label="undo dislike post">
                                             <span class="thumbs-up">
                                                 <i class="far fa-thumbs-down"></i>
                                             </span>
                                         </button>
                                     </form>
-                                {% endif %}
-                            </span>
+                                    {% endif %}
+                                </span>
                                 {% else %}
                                 <span class="thumbs-up thumbs"><i class="far fa-thumbs-up"></i></span>
                                 <span class="num-of-votes-horizontal"> {{post.total_votes}} </span>

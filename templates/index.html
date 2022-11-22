@@ -103,7 +103,7 @@
                 <div class="card index-blue-card mt-1">
                     <div class="card-body votes-section align-items-center justify-content-center">
                         {% if user.is_authenticated %}
-                        <span class="horizontal-votes">
+                        <span class="index-horizontal-votes">
                             <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                 {% csrf_token %}
                                 {% if user in post.upvotes.all %}

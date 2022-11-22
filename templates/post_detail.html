@@ -56,8 +56,6 @@
                         {% endif %}
                     </div>
                 </div>
-            
-        <!-- </div> -->
                 <div class="row">
                     <div class="col-12 text-center mt-2 mb-2">
                         {% if user.is_authenticated %}
@@ -106,14 +104,14 @@
                 </div>
             </div>
         <div class="row">
-            <div class="col-12 mt-1 mb-3">
+            <div class="col-12 mt-3 mb-3">
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is waiting to be approved!
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}
-                <h5>What do you think? Leave a Comment:</h5>
+                <h4>What do you think? Leave a Comment:</h4>
                 <form method="post">
                     {{ comment_form | crispy }}
                     {% csrf_token %}

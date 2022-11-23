@@ -40,7 +40,7 @@
                     <h1 class="post-title">{{post.title}} </h1>
 
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mt-3">
                             <p class="post-content">{{ post.content }}</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-12 mt-1">
                         {% if "placeholder" in post.featured_image.url %}
-                        <img src="" width="100%" alt="Featured image placeholder">
+                        <img src="" width="100%" alt="Featured image placeholder" class="featured-image">
                         {% else %}
                         <img src=" {{ post.featured_image.url }}" width="100%" class="featured-image" alt="Post featured image">
                         {% endif %}

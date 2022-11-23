@@ -86,14 +86,15 @@
                         <p class="card-text card-subheading"><small>{{ post.created_date }}</small>
                         </p>
                     </div>
-                    {% if "placeholder" in post.featured_image.url %}
-                    <img src="..." class="card-img-bottom" alt="...">
-                    {% else %}
-                    <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.featured_image.url }}" class="card-img-bottom box-shadow" alt="post-image">
-                    </a>
-                    {% endif %}
-
+                    <div class="center-image">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img src="..." class="card-img-bottom" alt="...">
+                        {% else %}
+                        <a href="{% url 'post_detail' post.slug %}">
+                            <img src="{{ post.featured_image.url }}" class="card-img-bottom box-shadow" alt="post-image">
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
 
             </div>

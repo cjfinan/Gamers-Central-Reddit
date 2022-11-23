@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-5 col-sm-12">
-            <div class="card mt-3 box-shadow blue-card">
+            <div class="card mt-3 box-shadow profile-blue-card">
                     {% if userprofile.profile_picture %}
                         <img src="{{ userprofile.profile_picture.url }}" class="profile-picture" alt="Users Profile Picture">
                     {% else %}
@@ -58,7 +58,7 @@
             <div class="row">
                 {% for post in user_posts %}
                 <div class="col-2 text-center mt-3 d-sm-none d-md-block d-none d-sm-block">
-                    <div class="card profile-votes-section box-shadow blue-card">
+                    <div class="card profile-votes-section box-shadow profile-blue-card">
                         <div class="card-body vertical-votes">
                             {% if user.is_authenticated %}
                             {% if user in post.upvotes.all %}
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                     <div class="col-lg-10 col-md-10 col-sm-12 mt-3 ">
-                        <div class="card profile-post-section box-shadow blue-card">
+                        <div class="card profile-post-section box-shadow profile-blue-card">
                             <div class="card-body">
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                     <h5 class="card-title">{{ post.title }}</h5>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-12 d-md-none text-center mt-1">
-                        <div class="card box-shadow blue-card">
+                        <div class="card box-shadow profile-blue-card">
                             <div class="card-body votes-section align-items-center justify-content-center">
                                 {% if user.is_authenticated %}
                                 <span class="horizontal-votes">

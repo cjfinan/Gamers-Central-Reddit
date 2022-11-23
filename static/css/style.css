@@ -122,10 +122,16 @@ nav{
 }
 
 .card-img-bottom{
-    max-height: 195px;
+    max-height: 190px;
     object-fit: cover;
     border-radius: 30px;
     height: 330px;
+}
+
+.center-image{
+    overflow: hidden;
+    position: relative;
+    text-align: center;
 }
 
 .card-subheading{
@@ -269,7 +275,7 @@ nav{
 .featured-image{
     max-height: 300px;
     max-width: 100%;
-    /* object-fit: contain; */
+    object-fit: contain;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -373,7 +379,7 @@ nav{
     border-color: #badbcc;
 }
 
-.blue-card, .index-blue-card, .post-card{
+.blue-card, .index-blue-card, .post-card, .profile-blue-card{
     background-color: rgba(16, 43, 63, 0.6);
     border: 2px solid #102b3f;
     padding: 10px;
@@ -381,7 +387,7 @@ nav{
     color: #e7e7e7
 }
 
-.index-blue-card{
+.index-blue-card, .profile-blue-card{
     padding: 0;
 }
 

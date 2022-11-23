@@ -113,25 +113,29 @@ All imagery for the background and placeholders were supplied by me.
 
 #### Home Page:
 
-![Homepage](LINK HERE)
+![Homepage]()
+#### Mobile:
+![Homepage](/static/images/homepagemobile.png)
 
 #### Navigation Bar:
 
-![Navbar](LINK HERE)
-#### Mobile:
-
-![NavbarMobile](LINK HERE)
+![Navbar](/static/images/navbar.png)
 
 #### Post Page
-![PostPage](LINK)
+![PostPage](/static/images/postpage.png)
+#### Mobile:
+![PostPage](/static/images/postpagemobile.png)
 
 #### Profile Page
-![ProfilePage](LINK)
+![ProfilePage](/static/images/profilepage.jpg)
+#### Mobile:
+![ProfilePage](/static/images/profilepagemobile.png)
+
 
 #### Log in, Log Out and Sign up:
-![Login](LINK)
-![Logout](LINK)
-![SignUp](LINK)
+![Login](/static/images/login.png)
+![Logout](/static/images/signoutpng.png)
+![SignUp](/static/images/signup.png)
 
 #### Create Post
 
@@ -139,6 +143,7 @@ All imagery for the background and placeholders were supplied by me.
 
 #### Edit and delete Posts
 
+![EditOrDeletePost](/static/images/editdeletepost.png)
 ![EditPost](LINK)
 ![DeletePost](LINK)
 

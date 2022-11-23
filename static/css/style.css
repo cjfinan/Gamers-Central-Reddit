@@ -266,6 +266,7 @@ nav{
     width: 200px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 50%;
 }
 
 .user-profile-title, .user-profile-bio, .user-profile-socials{

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 mt-2 center">
+        <div class="col-10 offset-1 mt-2 center">
             <div class="card post-card">
                 <div class="card-body">
                     <div class="edit-post mb-3">
@@ -24,7 +24,7 @@
                                     class="post-profile-picture">
                             </a>
                             {% else %}
-                            <img src="{{ post.author.userprofile.profile_picture.url }}" alt="Gamers central placeholder profile picture" class="post-profile-picture">
+                            <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" alt="Gamers central placeholder profile picture" class="post-profile-picture">
                             {% endif %}
                         </span>
                         {% if post.author.userprofile.id %}
@@ -50,9 +50,9 @@
                 <div class="row">
                     <div class="col-12 mt-1">
                         {% if "placeholder" in post.featured_image.url %}
-                        <img src="" width="100%" alt="Featured image placeholder" class="featured-image">
+                        <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669298429/Placeholder-img_pjs9j8.png" alt="Featured image placeholder" class="featured-image">
                         {% else %}
-                        <img src=" {{ post.featured_image.url }}" width="100%" class="featured-image" alt="Post featured image">
+                        <img src=" {{ post.featured_image.url }}" class="featured-image" alt="Post featured image">
                         {% endif %}
                     </div>
                 </div>
@@ -103,51 +103,58 @@
                     </div>
                 </div>
             </div>
-        <div class="row">
-            <div class="col-12 mt-3 mb-3">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is waiting to be approved!
-                </div>
-                {% else %}
-                {% if user.is_authenticated %}
-                <h4>What do you think? Leave a Comment:</h4>
-                <form method="post">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-signup mt-1" aria-label="Submit Comment">Submit</button>
-                </form>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is waiting to be approved!
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+                    <h4>What do you think? Leave a Comment:</h4>
+                    <form method="post">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-signup mt-1" aria-label="Submit Comment">Submit</button>
+                    </form>
 
-                {% endif %}
-                {% endif %}
-            </div>
-            <h4 class="comments-heading">Comments:</h4>
-            <div class="mb-3 mt-1">
-                {% for comment in comments %}
-                <div class="comments">
-                    <p class="post-comments">
-                        <span>
+                    {% endif %}
+                    {% endif %}
+                </div>
+                <h4 class="comments-heading">Comments:</h4>
+                <div class="mb-3 mt-1">
+                    {% for comment in comments %}
+                    <div class="comments">
+                        <p class="post-comments">
+                            <span>
+                                {% if comment.author.userprofile.id %}
+                                <a href="{% url 'view_profile' comment.author.userprofile.id %}" class="comment-link" aria-label="Comment authors profile">
+                                    {% endif %}
+                                {% if comment.author.userprofile.profile_picture %}
+                                    <img src="{{ comment.author.userprofile.profile_picture.url }}"
+                                        class="post-comment-picture" alt="Comment author profile picture">
+                                {% else %}
+                                    <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" class="post-comment-picture">
+                                {% endif %}
+                                </a>
+                            </span>
                             {% if comment.author.userprofile.id %}
                             <a href="{% url 'view_profile' comment.author.userprofile.id %}" class="comment-link" aria-label="Comment authors profile">
                             {% endif %}
-                                <img src="{{ comment.author.userprofile.profile_picture.url }}"
-                                    class="post-comment-picture" alt="Comment author profile picture">
+                                {{comment.name}}
                             </a>
+                            <span class="text-muted">
+                                {{comment.created_date}}
+                            </span> says:
+                        </p>
+                        <span class="comments-body">
+                            {{comment.body | linebreaks}}
                         </span>
-                        {% if comment.author.userprofile.id %}
-                        <a href="{% url 'view_profile' comment.author.userprofile.id %}" class="comment-link" aria-label="Comment authors profile">
-                        {% endif %}
-                            {{comment.name}}
-                        </a>
-                        <span class="text-muted">
-                            {{comment.created_date}}
-                        </span> says:
-                    </p>
-                    <span class="comments-body">
-                        {{comment.body | linebreaks}}
-                    </span>
-                </div>
-                {% endfor %}
+                    </div>
+                    {% endfor %}
             </div>
         </div>
+    </div>
+</div>
+</div>
         {% endblock content %}

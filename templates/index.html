@@ -7,10 +7,8 @@
             {% if user.is_authenticated %}
             <div class="col-12 mt-2 center">
                 <div class="col-8 mt-1 offset-2 text-center">
-                    <a href="{% url 'post_create' %}">
-                        <button class="btn btn-create-post">
-                            Create a post
-                        </button>
+                    <a href="{% url 'post_create' %}" class="btn btn-create-post">
+                        Create a post
                     </a>
                 </div>
             </div>
@@ -19,20 +17,19 @@
         <div class="row post-section mt-3">
                 <div class="col-1 offset-2 text-center d-none d-lg-block d-xl-block">
                     <div class="card box-shadow index-blue-card">
-                        <div class="card-body post-section align-items-center justify-content-center">
-                            <span class="vertical-votes">
+                        <div class="card-body post-section align-items-center justify-content-center vertical-votes">
                             {% if user.is_authenticated %}
                                 {% if user in post.upvotes.all %}
-                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
-                                        <span class="thumbs-up">
-                                        <i class="fas fa-thumbs-up thumbs"></i>
-                                        </span>
-                                        </button>
+                                            <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="like post">
+                                            <span class="thumbs-up">
+                                            <i class="fas fa-thumbs-up thumbs"></i>
+                                            </span>
+                                            </button>
                                     </form>
                                 {% else %}
-                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn-thumbs btn thumbs" aria-label="unlike post">
                                             <span class="thumbs-up">
@@ -64,13 +61,12 @@
                                     </form>
                                 {% endif %}
                             {% else %}
-                                <span class="vertical-vote-icons">
-                                    <span class="thumbs"><i class="far fa-thumbs-up"></i></span>
+                                <div>
+                                    <p class="thumbs"><i class="far fa-thumbs-up"></i></p>
                                     <p class="num-of-votes-vertical"> {{post.total_votes}}</p>
-                                    <span class="thumbs"><i class="far fa-thumbs-down"></i></span>
-                                </span>
+                                    <p class="thumbs"><i class="far fa-thumbs-down"></i></p>
+                                </div>
                             {% endif %}
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -88,7 +84,7 @@
                     </div>
                     <div class="center-image">
                         {% if "placeholder" in post.featured_image.url %}
-                        <img src="..." class="card-img-bottom" alt="...">
+                        <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669299048/Placeholder-image-blue_tnwyjz.png" class="card-img-bottom box-shadow" alt="...">
                         {% else %}
                         <a href="{% url 'post_detail' post.slug %}">
                             <img src="{{ post.featured_image.url }}" class="card-img-bottom box-shadow" alt="post-image">
@@ -102,22 +98,19 @@
         <div class="row mb-3">
             <div class="d-lg-none d-xl-none col-sm-12 col-md-8 offset-md-2 text-center">
                 <div class="card index-blue-card mt-1">
-                    <div class="card-body votes-section align-items-center justify-content-center">
+                    <div class="card-body align-items-center justify-content-center horizontal-votes">
                         {% if user.is_authenticated %}
-                        <span class="index-horizontal-votes">
-                            <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
-                                {% csrf_token %}
                                 {% if user in post.upvotes.all %}
-                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
                                          <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="like post">
-                                        <span class="thumbs-up">
-                                        <i class="fas fa-thumbs-up thumbs"></i>
-                                        </span>
+                                            <span class="thumbs-up">
+                                                <i class="fas fa-thumbs-up thumbs"></i>
+                                            </span>
                                         </button>
                                     </form>
                                 {% else %}
-                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline vertical-votes" method="POST">
+                                    <form action="{% url 'post_up_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
                                         <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="unlike post">
                                             <span class="thumbs-up">
@@ -126,7 +119,6 @@
                                         </button>
                                     </form>
                                 {% endif %}
-                            </form>
                             <span class="num-of-votes">
                                 {{post.total_votes}}
                             </span>
@@ -149,7 +141,6 @@
                                         </button>
                                     </form>
                             {% endif %}
-                        </span>
                         {% else %}
                         <p class="horizontal-icons">
                         <span class="thumbs"><i class="far fa-thumbs-up"></i></span>
@@ -163,23 +154,24 @@
             </div>
         </div>
     </div>
-            {% if forloop.counter|divisibleby:1%}
-        <div class="row">
-            {% endif %}
-            {% endfor %}
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% if forloop.counter|divisibleby:1%}
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
-            {% endif %}
-        </ul>
+                {% endif %}
+            </ul>
 
-    </nav>
+        </nav>
+    </div>
 </div>
 {% endif %}
 {% endblock content %}

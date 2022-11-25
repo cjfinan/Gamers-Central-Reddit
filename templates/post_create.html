@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if user.is_authenticated %}
 <div class="col-8 offset-2 mt-3 form-group blue-card">
     <h2 class="text-center">Create your post</h2>
     <form method="POST" enctype="multipart/form-data">
@@ -11,4 +11,10 @@
         </div>
     </form>
 </div>
+{% else %}
+<div class="col-8 offset-2 mt-3 form-group blue-card text-center">
+    <h2>You be signed in to create a post!</h2>
+    <p>Please return <a href="{% url 'home' %}"> home </a></p>
+</div>
+{% endif %}
 {% endblock content %}

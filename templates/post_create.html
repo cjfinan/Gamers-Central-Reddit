@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-8 offset-2 mt-5 form-group blue-card">
+<div class="col-8 offset-2 mt-3 form-group blue-card">
+    <h2 class="text-center">Create your post</h2>
     <form method="POST" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}

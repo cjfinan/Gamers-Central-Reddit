@@ -139,16 +139,17 @@ All imagery for the background and placeholders were supplied by me.
 
 #### Create Post
 
-![CreatePost](LINK)
+![CreatePost](/static/images/createpostbutton.png)
+![CreatePost](/static/images/createpostupdated.png)
 
 #### Edit and delete Posts
 
 ![EditOrDeletePost](/static/images/editdeletepost.png)
-![EditPost](LINK)
-![DeletePost](LINK)
+![EditPost](/static/images/updatepost.png)
+![DeletePost](/static/images/deletepost.png)
 
 #### Comment on a post:
-![Comment](LINK)
+![Comment](/static/images/comment.png)
 
 ## Testing
 

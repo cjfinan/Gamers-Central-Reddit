@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-8 offset-2 mt-5 form-group">
+<div class="col-8 offset-2 mt-5 form-group blue-card">
     <form method="POST" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-        <button class="btn btn-signup" aria-label="Submit post">Submit Post</button>
+        <div class="text-center center-align">
+            <button class="btn btn-signup" aria-label="Submit post">Submit Post</button>
+        </div>
     </form>
 </div>
 {% endblock content %}

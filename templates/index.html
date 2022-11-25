@@ -44,7 +44,7 @@
                                 {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumps" aria-label="dislike post">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn btn-thumbs thumbs" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>
@@ -125,7 +125,7 @@
                             {% if user in post.downvotes.all %}
                                     <form action="{% url 'post_down_vote' post.slug %}" class="d-inline" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumps" aria-label="dislike post">
+                                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn thumbs" aria-label="dislike post">
                                             <span class="thumbs-up">
                                                 <i class="fas fa-thumbs-down"></i>
                                             </span>

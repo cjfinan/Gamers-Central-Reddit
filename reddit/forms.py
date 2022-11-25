@@ -31,7 +31,7 @@ class UpdatePostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            'content': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
 

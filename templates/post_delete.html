@@ -3,12 +3,14 @@
 
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
-        <div class="col-8 offset-2 mt-5 form-group">
-            <h5>Are you sure you want to delete this post?</h5>
+        <div class="col-8 offset-2 mt-5 form-group blue-card text-center">
+            <h3>Are you sure you want to delete this post?</h3>
         
             <form method="POST">
                 {% csrf_token %}
-                <button class="btn btn-signup" aria-label="Delete post">Delete!</button>
+                <div class="text-center">
+                    <button class="btn btn-signup" aria-label="Delete post">Delete!</button>
+                </div>
             </form>
         
          </div>
@@ -16,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-8 offset-2 mt-3">
-                    <h5>Only the post author can delete this post!</h5>
+                    <h5>Only the posts author can delete this post!</h5>
                     <p>Please return <a href="{% url 'home' %}"> home </a></p>
                 </div>
             </div>
@@ -25,8 +27,8 @@
 {% else %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 offset-2 mt-3">
-                <h5>Only the post author can delete this post!</h5>
+            <div class="col-8 offset-2 mt-3 blue-card text-center">
+                <h5>Only the posts author can delete this post!</h5>
                 <p>Please return <a href="{% url 'home' %}"> home </a></p>
             </div>
         </div>

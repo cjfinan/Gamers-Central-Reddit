@@ -4,17 +4,19 @@
 
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
-        <div class="col-8 offset-2 mt-5 form-group">
+        <div class="col-8 offset-2 mt-5 form-group blue-card">
             <form method="POST">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button class="btn btn-signup">Update</button>
+                <div class="text-center">
+                    <button class="btn btn-signup">Update</button>
+                </div>
             </form>
         </div>
     {% else %}
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8 offset-2 mt-3">
+                <div class="col-8 offset-2 mt-3 blue-card text-center">
                     <h5>Only the post author can edit this post!</h5>
                     <p>Please return <a href="{% url 'home' %}"> home </a></p>
                 </div>
@@ -24,7 +26,7 @@
 {% else %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 offset-2 mt-3">
+            <div class="col-8 offset-2 mt-3 blue-card text-center">
                 <h5>Only the post author can edit this post!</h5>
                 <p>Please return <a href="{% url 'home' %}"> home </a></p>
             </div>

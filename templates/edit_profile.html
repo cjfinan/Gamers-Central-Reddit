@@ -13,7 +13,7 @@
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <div class="div text-center center-align">
+                            <div class="text-center center-align">
                             <button class="btn btn-signup btn-update" aria-label="Update profile">Update Profile</button>
                             </div>
                         </form>
@@ -21,7 +21,7 @@
             </div>
             {% else %}
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 blue-card">
                     <h5>You can only edit your own profile!</h5>
                     <p>Login <a href="{% url 'account_login' %}" aria-label="Login here">here!</a></p>
                 </div>
@@ -29,7 +29,7 @@
             {% endif %}
             {% else %}
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 blue-card">
                     <h5>You can only edit your own profile!</h5>
                     <p>Login <a href="{% url 'account_login' %}" aria-label="Login here">here!</a></p>
                 </div>

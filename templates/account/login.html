@@ -18,11 +18,14 @@
           <a class="link" href="{{ signup_url }}">sign up</a>{% endblocktrans %} here!</p>
         <div class="col-4 mt-5 offset-4">
           <form method="POST" action="{% url 'account_login' %}">
+            {{ form.non_field_errors | safe }}
             {% csrf_token %}
+            {{ form.username.errors | safe }}
             <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username"
               name="login" required id="id_login">
         </div>
         <div class="col-4 mt-5 offset-4">
+          {{ form.password.errors | safe }}
           <input type="password" class="form-control" placeholder="Password" autocomplete="current-password"
             aria-label="password" name="password" required id="id_password">
         </div>

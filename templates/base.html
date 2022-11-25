@@ -42,7 +42,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {% if userprofile.profile_picture %}
+                            {% if user.userprofile.profile_picture %}
                                 <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile-picture"
                                     class="d-inline-block nav-profile-picture">
                             {% else %}

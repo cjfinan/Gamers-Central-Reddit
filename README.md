@@ -2,12 +2,17 @@
 Gamers Central is a inclusive gaming commuinity that creates a place to talk about all things games!
 It allows its members to share their ideas, talk about other peoples topics all whilst styling thier own profiles to stand out from the crowd 
 
-[Reponsive Design](INSERT LINK)
+![Reponsive Design](/static/images/responsive.png)
 
 You can view The live site [here!](https://gamers-central.herokuapp.com/)
 
 ### Table of contents
-
++ [UX](#ux)
++ [UserStories](#user-stories)
++ [Design](#design)
++ [Features](#features)
++ [Testing](#testing)
++ [Deployment](#deployment)
 
 ## UX
 
@@ -113,7 +118,7 @@ All imagery for the background and placeholders were supplied by me.
 
 #### Home Page:
 
-![Homepage]()
+![Homepage](/static/images/homepage.png)
 #### Mobile:
 ![Homepage](/static/images/homepagemobile.png)
 
@@ -219,7 +224,7 @@ All imagery for the background and placeholders were supplied by me.
 
 #### Lighthouse
 
-![Lighthouse](LINK)
+![Lighthouse](/static/images/lighthouse.png)
 
 ### Technologies Used
 
@@ -246,15 +251,21 @@ All imagery for the background and placeholders were supplied by me.
 - django-crispy-forms
 
 ## Deployment
-The site was deployed to Heroku:
 
+### Forking the Github Repository
+- Log in to GitHub and locate repository
+- Locate the Fork button at the top of the page
+- Click the button and you will have a copy in your GitHub account
+
+
+### The site was deployed to Heroku:
 - Go to Heroku and create a new app called gamers-central.
-- Add the Heroku Postgres database to the Resources tab.
+- Create a ElephantSQL database
 - Go to Settings Tab, to add the following key/value pairs to the configvars:
   - key: SECRET_KEY | value: randomkey
   - key: PORT | value: 8000
   - key: CLOUDINARY_URL | value: API environment variable
-  - key: DATABASE_URL | value: value supplied by Heroku
+  - key: DATABASE_URL | value: ElephantSQL link
   
 - Add the DATABASE_URL, SECRET_KEY & CLOUDINARY_URL to the env.py file
 

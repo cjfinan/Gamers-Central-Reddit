@@ -7,7 +7,14 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .models import Post, UserProfile, User
 from django.db.models import Q
-from .forms import CommentForm, CreatePostForm, EditUserProfileForm, ChangePasswordForm, CreateProfileForm, UpdatePostForm
+from .forms import (
+    CommentForm,
+    CreatePostForm,
+    EditUserProfileForm,
+    ChangePasswordForm,
+    CreateProfileForm,
+    UpdatePostForm
+    )
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -110,7 +117,9 @@ class PostCreate(SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'post_create.html'
-    success_message = 'Your Post has been submitted and now is awaiting approval.'
+    success_message = (
+        'Your Post has been submitted and now is awaiting approval.'
+        )
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -138,7 +147,10 @@ class PostDelete(SuccessMessageMixin, DeleteView):
 def PostSearch(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        posts = Post.objects.filter(Q(content__icontains=searched) | Q(title__icontains=searched), status=1)
+        posts = Post.objects.filter(
+            Q(content__icontains=searched) | Q(title__icontains=searched),
+            status=1
+            )
         return render(
             request,
             'post_search.html',

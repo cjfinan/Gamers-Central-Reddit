@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
         <div class="col-8 offset-2 mt-5 form-group blue-card">
@@ -33,10 +32,4 @@
         </div>
     </div>
 {% endif %}
-
-
-
-
-
-
 {% endblock content %}

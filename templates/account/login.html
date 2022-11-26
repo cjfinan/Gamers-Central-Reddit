@@ -10,19 +10,18 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 mt-4 offset-2 text-center">
-      <div class="card blue-card">
-        <h2>{% trans "Login" %}</h2>
-        <p>{% blocktrans %}Wants to be apart of the conversation?
-          if you have not done so then
-          <a class="link" href="{{ signup_url }}">sign up</a>{% endblocktrans %} here!</p>
+    <div class="col-md-8 mt-4 offset-2 text-center card blue-card">
+      <h2>{% trans "Login" %}</h2>
+      <p>{% blocktrans %}Wants to be apart of the conversation?
+        if you have not done so then
+        <a class="link" href="{{ signup_url }}">sign up</a>{% endblocktrans %} here!</p>
+      <form method="POST" action="{% url 'account_login' %}">
         <div class="col-4 mt-5 offset-4">
-          <form method="POST" action="{% url 'account_login' %}">
-            {{ form.non_field_errors | safe }}
-            {% csrf_token %}
-            {{ form.username.errors | safe }}
-            <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username"
-              name="login" required id="id_login">
+          {{ form.non_field_errors | safe }}
+          {% csrf_token %}
+          {{ form.username.errors | safe }}
+          <input type="text" class="form-control" placeholder="Username" autocomplete="username" aria-label="Username"
+            name="login" required id="id_login">
         </div>
         <div class="col-4 mt-5 offset-4">
           {{ form.password.errors | safe }}
@@ -31,9 +30,8 @@
         </div>
         <div class="col-4 mt-5 offset-4 mb-4">
           <button class="btn btn-signup" aria-label="Sign in">Sign in</button>
-          </form>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

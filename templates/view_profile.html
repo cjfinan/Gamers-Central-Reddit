@@ -9,7 +9,8 @@
                 {% if userprofile.profile_picture %}
                 <img src="{{ userprofile.profile_picture.url }}" class="profile-picture" alt="Users Profile Picture">
                 {% else %}
-                <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" class="profile-picture">
+                <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" class="profile-picture"
+                    alt="Placeholder profile picture">
                 {% endif %}
                 <h5 class="user-profile-title"> {{ userprofile.user }}</h5>
                 <p class="user-profile-bio"> {{ userprofile.bio }}</p>

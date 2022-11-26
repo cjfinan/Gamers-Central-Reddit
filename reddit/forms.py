@@ -70,7 +70,14 @@ class ChangePasswordForm(PasswordChangeForm):
 class CreateProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('bio', 'profile_picture', 'website_url', 'facebook_url', 'instagram_url', 'twitter_url')
+        fields = (
+            'bio',
+            'profile_picture',
+            'website_url',
+            'facebook_url',
+            'instagram_url',
+            'twitter_url')
+
         widgets = {
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
             'website_url': forms.TextInput(attrs={'class': 'form-control'}),

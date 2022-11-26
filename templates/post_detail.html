@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 mt-2 center">
+        <div class="col-md-10 offset-md-1 col-sm-12 mt-2 center">
             <div class="card post-card">
                 <div class="card-body">
                     <div class="edit-post mb-3">
@@ -40,8 +40,8 @@
                     <h1 class="post-title">{{post.title}} </h1>
 
                     <div class="row">
-                        <div class="col-12 mt-3">
-                            <p class="post-content">{{ post.content }}</p>
+                        <div class="col-12 mt-3 post-content">
+                            <p>{{ post.content }}</p>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-12 mt-1">
                         {% if "placeholder" in post.featured_image.url %}
-                        <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669298429/Placeholder-img_pjs9j8.png" alt="Featured image placeholder" class="featured-image">
+                        <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669409281/Placeholder-image-small_mjgwai.png" alt="Featured image placeholder" class="featured-image">
                         {% else %}
                         <img src=" {{ post.featured_image.url }}" class="featured-image" alt="Post featured image">
                         {% endif %}
@@ -134,7 +134,8 @@
                                     <img src="{{ comment.author.userprofile.profile_picture.url }}"
                                         class="post-comment-picture" alt="Comment author profile picture">
                                 {% else %}
-                                    <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" class="post-comment-picture">
+                                    <img src="https://res.cloudinary.com/djtwpo6g7/image/upload/v1669300916/Placeholder-profile_hebiah.png" 
+                                        class="post-comment-picture" alt="Users placeholder profile picture">
                                 {% endif %}
                                 </a>
                             </span>

@@ -8,18 +8,18 @@
         <div class="col-12">
             <div class="col-8 offset-2 mt-2">
                 <h5>Create your profile for everyone to see!</h5>
-                </div>
-                <div class="col-8 offset-2 mt-5 form-group">
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button class="btn btn-signup" aria-label="Create profile">Create Profile</button>
-                    </form>
-                </div>
+            </div>
+            <div class="col-8 offset-2 mt-5 form-group">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-signup" aria-label="Create profile">Create Profile</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 {% endif %}
 
 

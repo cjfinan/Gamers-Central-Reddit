@@ -16,27 +16,27 @@
           <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
             {{ form.non_field_errors | safe }}
-            <input type="hidden" name="remember" value="true" />
+            <input type="hidden" name="remember" value="true">
             <div class="col-md-8 mt-3">
               {{ form.username.errors | safe }}
-              <label for="username" class="sr-only">Username</label>
+              <label class="sr-only">Username</label>
               <input type="text" name="username" placeholder="Username" class="form-control" required id="id_username"
                 autocomplete="username">
             </div>
             <div class="col-md-8 mt-3">
               {{ form.email.errors | safe }}
-              <label for="email" class="sr-only">Username</label>
+              <label class="sr-only">Username</label>
               <input type="email" name="email" placeholder="Email (Optional)" class="form-control" autocomplete="email">
             </div>
             <div class="col-md-8 mt-3">
               {{ form.password1.errors | safe }}
-              <label for="id_password1" class="sr-only">Password</label>
+              <label class="sr-only">Password</label>
               <input type="password" name="password1" placeholder="Password" class="form-control" required
                 id="id_password1" autocomplete="new-password">
             </div>
             <div class="col-md-8 mt-3">
               {{ form.password2.errors | safe }}
-              <label for="password2" class="sr-only">Password</label>
+              <label class="sr-only">Password</label>
               <input type="password" name="password2" placeholder="Repeat Password" class="form-control" required
                 id="id_password2" autocomplete="new-password">
             </div>
